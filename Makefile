@@ -12,12 +12,11 @@
 
 NAME = ft_printf
 
-LIBFT = libft/libft.a
-PRINTF = libftprintf/libftprintf.a
+LIB = libft/libftprintf.a
 
 FILE = main.c
 
-INC = -I libft -I libftprintf
+INC = -I libft
 
 SRC = $(FILE:%=%)
 OBJ = $(FILE:%.c=objs/%.o)
@@ -29,14 +28,11 @@ RM = rm -f
 
 all: $(NAME)
 
-$(NAME) : $(LIBFT) $(PRINTF) $(OBJ)
-		@$(CC) -o $@ $(OBJ) -L libft/ -lft -L libftprintf/ -lft
+$(NAME) : $(LIB) $(OBJ)
+		@$(CC) -o $@ $(OBJ) -L libft/ -lftprintf
 
-$(LIBFT) :
+$(LIB) :
 		@make -C libft/ all
-
-$(PRINTF) :
-		@make -C libftprintf/ all
 
 objs/%.o: %.c
 		@mkdir -p objs
@@ -46,12 +42,10 @@ clean:
 		@$(RM) $(OBJ)
 		@rm -df objs
 		@make -C libft/ clean
-		@make -C libftprintf/ clean
 
 fclean: clean
 		@$(RM) $(NAME)
 		@make -C libft/ fclean
-		@make -C libftprintf/ fclean
 
 re: fclean all
 
