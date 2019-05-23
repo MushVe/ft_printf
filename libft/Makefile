@@ -62,7 +62,7 @@ $(NAME):
 		@ranlib $(NAME)
 
 clean:
-		@/bin/rm -f $(OBJ) $(OBJ)
+		@/bin/rm -f $(OBJ) $(LIBOBJ)
 
 fclean: clean
 		@/bin/rm -f $(NAME)
