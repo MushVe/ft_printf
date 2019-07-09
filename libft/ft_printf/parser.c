@@ -12,8 +12,16 @@
 
 #include "../includes/ft_printf.h"
 
-int	parser()
+int	parser(const char * restrict format)
 {
+	int	i;
 
-	return 0;
+	i = -1;
+	while (format[++i])
+	{
+		
+		
+	}
+
+	return (0);
 }

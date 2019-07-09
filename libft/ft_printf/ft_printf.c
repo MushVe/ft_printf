@@ -36,6 +36,8 @@ void printargs(int arg1, ...)
 
 int		ft_printf(const char * restrict format, ...)
 {
-	format++;
+
+	parser(format);
+
 	return (0);
 }

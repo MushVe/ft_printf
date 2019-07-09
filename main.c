@@ -12,6 +12,7 @@ int main(void)
 	printargs(84, 51, -1);
 	printargs(-1);
 	printargs(1, -1);
+	ft_printf("Aa %d Bb %c Cc %s");
 	return 0;
 }
 
