@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cseguier <cseguier@student.42.fr>          +#+  +:+       +#+         #
+#    By: cseguier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/04/29 14:20:48 by cseguier          #+#    #+#              #
-#    Updated: 2019/04/29 14:20:50 by cseguier         ###   ########.fr        #
+#    Created: 2018/11/07 17:07:19 by cseguier          #+#    #+#              #
+#    Updated: 2019/06/27 13:42:46 by cseguier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,57 +14,50 @@
 
 NAME = libftprintf.a
 
-FILE = ft_printf.c
-LIBFILE = libft/ft_atoi.c libft/ft_bzero.c libft/ft_capitalize.c \
-	  libft/ft_foreach.c libft/ft_isalnum.c libft/ft_isalpha.c \
-	  libft/ft_isascii.c \
-	  libft/ft_isdigit.c libft/ft_isprint.c libft/ft_itoa.c \
-	  libft/ft_lowcase.c libft/ft_lstadd.c \
-	  libft/ft_lstdel.c libft/ft_lstdelone.c libft/ft_lstiter.c \
-	  libft/ft_lstmap.c libft/ft_lstnew.c \
-	  libft/ft_memalloc.c libft/ft_memccpy.c libft/ft_memchr.c \
-	  libft/ft_memcmp.c libft/ft_memcpy.c \
-	  libft/ft_memdel.c libft/ft_memmove.c libft/ft_memset.c \
-	  libft/ft_putchar.c libft/ft_putchar_fd.c \
-	  libft/ft_putendl.c libft/ft_putendl_fd.c libft/ft_putnbr.c \
-	  libft/ft_putnbr_fd.c libft/ft_putnstr.c \
-	  libft/ft_putstr.c libft/ft_putstr_fd.c libft/ft_quicksort.c \
-	  libft/ft_sqrt.c libft/ft_strcat.c libft/ft_strccpy.c \
-	  libft/ft_strcdup.c libft/ft_strchr.c \
-	  libft/ft_strclr.c libft/ft_strcmp.c libft/ft_strcpy.c \
-	  libft/ft_strdel.c libft/ft_strdup.c \
-	  libft/ft_strequ.c libft/ft_striter.c libft/ft_striteri.c \
-	  libft/ft_strjoin.c libft/ft_strlcat.c \
-	  libft/ft_strlen.c libft/ft_strmap.c libft/ft_strmapi.c \
-	  libft/ft_strncat.c libft/ft_strncmp.c \
-	  libft/ft_strncpy.c libft/ft_strnequ.c libft/ft_strnew.c \
-	  libft/ft_strnstr.c libft/ft_strrchr.c \
-	  libft/ft_strrev.c libft/ft_strsplit.c libft/ft_strstr.c \
-	  libft/ft_strsub.c libft/ft_strtrim.c \
-	  libft/ft_tolower.c libft/ft_toupper.c libft/ft_upcase.c \
-	  libft/get_next_line.c
+FILE = 	ft_abs.c ft_atoi.c ft_bzero.c ft_capitalize.c ft_foreach.c \
+		ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
+		ft_itoa.c ft_lowcase.c ft_lstadd.c ft_lstdel.c ft_lstdelone.c \
+		ft_lstiter.c ft_lstmap.c ft_lstnew.c ft_memalloc.c ft_memccpy.c \
+		ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c ft_memmove.c \
+		ft_memset.c ft_pow.c ft_putchar.c ft_putchar_fd.c ft_putendl.c \
+		ft_putendl_fd.c ft_putnbr.c ft_putnbr_fd.c ft_putnstr.c ft_putstr.c \
+		ft_putstr_fd.c ft_quicksort.c ft_sqrt.c ft_strcat.c ft_strccpy.c \
+		ft_strcdup.c ft_strchr.c ft_strclr.c ft_strcmp.c ft_strcpy.c \
+		ft_strdel.c ft_strdup.c ft_strequ.c ft_striter.c ft_striteri.c \
+		ft_strjoin.c ft_strlcat.c ft_strlen.c ft_strmap.c ft_strmapi.c \
+		ft_strncat.c ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c \
+		ft_strnstr.c ft_strrchr.c ft_strrev.c ft_strsplit.c ft_strstr.c \
+		ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c ft_upcase.c \
+		get_next_line.c \
+		ft_printf.c parser.c
 
 SRC = $(FILE:%=%)
-LIBSRC = $(LIBFILE:%=%)
 
-OBJ = $(FILE:%.c=%.o)
-LIBOBJ = $(LIBFILE:libft/%.c=%.o)
+OBJ = $(FILE:%.c=objs/%.o)
 
 CFLAGS = -Wall -Werror -Wextra
-
 CC = gcc $(CFLAGS)
+RM = rm -f
 
 all: $(NAME)
 
-$(NAME):
-		@$(CC) -c $(SRC) $(LIBSRC)
-		@ar rcs $(NAME) $(OBJ) $(LIBOBJ)
+$(NAME): $(OBJ)
+		@ar rcs $(NAME) $(OBJ) 
 		@ranlib $(NAME)
 
+objs/%.o: src/%.c
+		@mkdir -p objs
+		@$(CC) -c $< -o $@
+
+objs/%.o: ft_printf/%.c
+		@mkdir -p objs
+		@$(CC) -c $< -o $@
+
 clean:
-		@/bin/rm -f $(OBJ) $(LIBOBJ)
+		@$(RM) $(OBJ)
+		@rm -df objs
 
 fclean: clean
-		@/bin/rm -f $(NAME)
+		@$(RM) $(NAME)
 
 re: fclean all

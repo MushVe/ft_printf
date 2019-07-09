@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdarg.h>
-#include "libft/ft_printf.h"
-#include "libft/libft/libft.h"
+#include "libft/includes/libft.h"
+#include "libft/includes/ft_printf.h"
 
 
 

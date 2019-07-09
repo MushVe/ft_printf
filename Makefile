@@ -10,13 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_printf
+NAME = printf
 
-LIB = libft/libftprintf.a
+LIBFT = libft/libftprintf.a
 
 FILE = main.c
 
-INC = -I libft
+INC = -I libft -I /usr/local/include/mlx.h
 
 SRC = $(FILE:%=%)
 OBJ = $(FILE:%.c=objs/%.o)
@@ -28,10 +28,16 @@ RM = rm -f
 
 all: $(NAME)
 
-$(NAME) : $(LIB) $(OBJ)
+$(NAME) : $(LIBFT) $(OBJ)
 		@$(CC) -o $@ $(OBJ) -L libft/ -lftprintf
+		@echo "\n\
+                        ..\n\
+                      / __)  Done.\n\
+               .-^^^-/ /\n\
+            __/       /\n\
+           <__.|_|-|_|\n"
 
-$(LIB) :
+$(LIBFT) :
 		@make -C libft/ all
 
 objs/%.o: %.c
