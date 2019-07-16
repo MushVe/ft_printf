@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_stridup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cseguier <cseguier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,31 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../includes/libft.h"
 
-int	parser(const char * restrict format, t_linkedlist **list)
+char	*ft_stridup(char const *src, int it)
 {
-	int	i;
-	int	j;
-	int	flag;
+	char	*s;
 
-	flag = 0;
-	i = -1;
-	j = 0;
-	while (format[++i])
-	{
-		if (format[i] == '%')
-		{
-			flag = 1;
-			new_node(ft_stridup(format + j, i - j), i - j, list);
-			// envoyer le flag pour traitement
-		}
-		if (format[i] == ' ' && flag == 1)
-		{
-			j = i;
-		}
-		
-	}
-
-	return (0);
+	if (!(s = (char*)ft_memalloc((sizeof(*s) * (ft_strlen(src) + 1)))))
+		return (0);
+	return (ft_stricpy(s, src, it));
 }

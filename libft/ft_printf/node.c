@@ -12,29 +12,54 @@
 
 #include "../includes/ft_printf.h"
 
-int	parser(const char * restrict format, t_linkedlist **list)
+void	free_list(t_linkedlist **list)
 {
-	int	i;
-	int	j;
-	int	flag;
+	t_linkedlist *cpy;
+	t_linkedlist *tmp;
 
-	flag = 0;
-	i = -1;
-	j = 0;
-	while (format[++i])
+	cpy = *list;
+	tmp = NULL;
+	while (cpy)
 	{
-		if (format[i] == '%')
-		{
-			flag = 1;
-			new_node(ft_stridup(format + j, i - j), i - j, list);
-			// envoyer le flag pour traitement
-		}
-		if (format[i] == ' ' && flag == 1)
-		{
-			j = i;
-		}
-		
+		tmp = cpy->next;
+		free(cpy);
+		cpy = NULL;
+		cpy = tmp;
 	}
+}
 
-	return (0);
+void	new_node(char *data, int size, t_linkedlist **list)
+{
+	t_linkedlist *cpy;
+	t_linkedlist *node;
+
+	cpy = *list;
+	if (!(node = (t_linkedlist*)ft_memalloc(sizeof(t_linkedlist))))
+		put_exit("malloc node error");
+	if (!cpy)
+	{
+		node->str = ft_strdup(data);
+		node->size = size;
+		node->next = NULL;
+		*list = node;
+		return ;
+	}
+	while (cpy->next != NULL)
+		cpy = cpy->next;
+	node->str = ft_strdup(data);
+	node->size = size;
+	node->next = NULL;
+	cpy->next = node;
+}
+
+int		get_node(int aim, t_param *p)
+{
+	t_linkedlist	*cpy;
+	int				i;
+
+	cpy = p->first;
+	i = -1;
+	while (++i < aim && cpy)
+		cpy = cpy->next;
+	return (cpy->str);
 }

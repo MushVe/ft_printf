@@ -16,6 +16,21 @@
 # include <stdarg.h>
 # include "libft.h"
 
-void printargs(int arg1, ...);
+typedef struct	s_linkedlist
+{
+	char				*str;
+	int					size;
+	struct s_linkedlist	*next;
+}				t_linkedlist;
+
+typedef struct	s_param
+{
+	
+	t_linkedlist		*first;
+
+}				t_param;
+
+void			new_node(char *data, int size, t_linkedlist **list);
+void			printargs(int arg1, ...);
 
 #endif
