@@ -12,7 +12,23 @@
 
 #include "../includes/ft_printf.h"
 
-int	parser(const char * restrict format, t_linkedlist **list)
+int		print_node(t_param *p)
+{
+	t_llist	*cpy;
+	int		i;
+
+	cpy = p->first;
+	i = -1;
+	while (cpy)
+	{
+	//	ft_putendl("BBB");
+		ft_putstr(cpy->str);
+		cpy = cpy->next;
+	}
+	return (0);
+}
+
+int	parser(const char * restrict format, t_llist **list, t_param *p)
 {
 	int	i;
 	int	j;
@@ -26,15 +42,23 @@ int	parser(const char * restrict format, t_linkedlist **list)
 		if (format[i] == '%')
 		{
 			flag = 1;
-			new_node(ft_stridup(format + j, i - j), i - j, list);
+		//	ft_putendl("000");
+			if (!(new_node(ft_stridup(format + j, i - j), i - j, list)))
+				return (0);
+		//	ft_putendl("111");
 			// envoyer le flag pour traitement
 		}
 		if (format[i] == ' ' && flag == 1)
 		{
 			j = i;
+			flag = 0;
 		}
 		
 	}
+	p->first = *list;
+//	ft_putendl("222");
+	print_node(p);
+//	ft_putendl("333");
 
 	return (0);
 }

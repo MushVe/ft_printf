@@ -36,8 +36,11 @@ void printargs(int arg1, ...)
 
 int		ft_printf(const char * restrict format, ...)
 {
+	t_param p;
+	t_llist	*list;
 
-	parser(format);
+	list = NULL;
+	parser(format, &list, &p);
 
 	return (0);
 }

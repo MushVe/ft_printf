@@ -12,10 +12,10 @@
 
 #include "../includes/ft_printf.h"
 
-void	free_list(t_linkedlist **list)
+void	free_list(t_llist **list)
 {
-	t_linkedlist *cpy;
-	t_linkedlist *tmp;
+	t_llist *cpy;
+	t_llist *tmp;
 
 	cpy = *list;
 	tmp = NULL;
@@ -28,33 +28,44 @@ void	free_list(t_linkedlist **list)
 	}
 }
 
-void	new_node(char *data, int size, t_linkedlist **list)
+int	new_node(char *data, int size, t_llist **list)
 {
-	t_linkedlist *cpy;
-	t_linkedlist *node;
+	t_llist *cpy;
+	t_llist *node;
 
 	cpy = *list;
-	if (!(node = (t_linkedlist*)ft_memalloc(sizeof(t_linkedlist))))
-		put_exit("malloc node error");
+		//	ft_putendl("444");
+	if (!(node = (t_llist*)ft_memalloc(sizeof(t_llist))))
+		return (0);
+		//	ft_putendl("555");
 	if (!cpy)
 	{
+		//	ft_putendl("666");
 		node->str = ft_strdup(data);
 		node->size = size;
 		node->next = NULL;
 		*list = node;
-		return ;
+		return 1;
 	}
+		//	ft_putendl("777");
 	while (cpy->next != NULL)
+	{
+		//	ft_putendl("AAA");
 		cpy = cpy->next;
+		//	ft_putendl("888");
+	}
+//	ft_putendl("999");
 	node->str = ft_strdup(data);
 	node->size = size;
 	node->next = NULL;
 	cpy->next = node;
+		//	ft_putendl("100");
+	return (1);
 }
 
-int		get_node(int aim, t_param *p)
+char		*get_node(int aim, t_param *p)
 {
-	t_linkedlist	*cpy;
+	t_llist	*cpy;
 	int				i;
 
 	cpy = p->first;

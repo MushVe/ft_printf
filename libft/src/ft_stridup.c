@@ -18,5 +18,5 @@ char	*ft_stridup(char const *src, int it)
 
 	if (!(s = (char*)ft_memalloc((sizeof(*s) * (ft_strlen(src) + 1)))))
 		return (0);
-	return (ft_stricpy(s, src, it));
+	return (ft_stricpy(s, it, src));
 }
