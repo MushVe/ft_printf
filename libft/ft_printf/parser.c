@@ -12,6 +12,14 @@
 
 #include "../includes/ft_printf.h"
 
+int		isflag(char c)
+{
+	if (c == 'c' || c == 's' || c == 'd' || c == 'i' || c == 'o'
+		|| c == 'u' || c == 'x' || c == 'X' || c == 'f' || c == '%')
+		return (1);
+	return (0);
+}
+
 int		print_node(t_param *p)
 {
 	t_llist	*cpy;
@@ -34,27 +42,30 @@ int	parser(const char * restrict format, t_llist **list, t_param *p)
 	int	j;
 	int	flag;
 
-	flag = 0;
+	flag = 1;
 	i = -1;
 	j = 0;
 	while (format[++i])
 	{
-		if (format[i] == '%')
+		if (flag == 1 && (format[i] == '%' || format[i] == '\0'))
 		{
-			flag = 1;
-		//	ft_putendl("000");
-			if (!(new_node(ft_stridup(format + j, i - j), i - j, list)))
-				return (0);
-		//	ft_putendl("111");
-			// envoyer le flag pour traitement
-		}
-		if (format[i] == ' ' && flag == 1)
-		{
-			j = i;
 			flag = 0;
+			if (j != i)
+				if (!(new_node(ft_stridup(format + j, i - j), i - j, list)))
+					return (0);
+
 		}
-		
+		else if (flag == 0)
+		{
+			while (!(isflag(format[i]))) i++;
+			// envoyer le flag pour traitement puis stocker dans node
+			flag = 1;
+			j = i + 1;
+		}
 	}
+	if (j + 1 != i)
+		if (!(new_node(ft_stridup(format + j, i - j), i - j, list)))
+			return (0);
 	p->first = *list;
 //	ft_putendl("222");
 	print_node(p);

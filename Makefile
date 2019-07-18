@@ -30,12 +30,12 @@ all: $(NAME)
 
 $(NAME) : $(LIBFT) $(OBJ)
 		@$(CC) -o $@ $(OBJ) -L libft/ -lftprintf
-		@echo "\n\
-                        ..\n\
-                      / __)  Done.\n\
-               .-^^^-/ /\n\
-            __/       /\n\
-           <__.|_|-|_|\n"
+#		@echo "\n\
+#                        ..\n\
+#                      / __)  Done.\n\
+#               .-^^^-/ /\n\
+#            __/       /\n\
+#           <__.|_|-|_|\n"
 
 $(LIBFT) :
 		@make -C libft/ all

@@ -7,12 +7,16 @@
 
 int main(void)
 {
-	ft_putendl("Bye");
-	printargs(5, 2, 14, 84, 97, 0, 15, 24, 48, -1);
-	printargs(84, 51, -1);
-	printargs(-1);
-	printargs(1, -1);
-	ft_printf("Aa %d Bb %c Cc %s");
+	// ft_putendl("Bye");
+	// printargs(5, 2, 14, 84, 97, 0, 15, 24, 48, -1);
+	// printargs(84, 51, -1);
+	// printargs(-1);
+	// printargs(1, -1);
+		//ft_putstr("%%%d Aa %d Bb %c Cc %s Dd%x.\n");
+	//ft_putstr("%%%d1.Aa,2%d3:Bb;4%c5!Cc?6%s7=Dd%x.\n");
+		//ft_putstr(" Aa  Bb  Cc  Dd.\n");
+	ft_printf("%X%f1.Aa,2%d3:Bb;4%c5!Cc?6%%%s7=Dd%x.\n");
+	ft_putstr("1.Aa,23:Bb;45!Cc?67=Dd.\n");
 	return 0;
 }
 

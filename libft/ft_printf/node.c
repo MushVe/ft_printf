@@ -33,6 +33,8 @@ int	new_node(char *data, int size, t_llist **list)
 	t_llist *cpy;
 	t_llist *node;
 
+	ft_putendl(data);
+
 	cpy = *list;
 		//	ft_putendl("444");
 	if (!(node = (t_llist*)ft_memalloc(sizeof(t_llist))))
