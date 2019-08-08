@@ -7,6 +7,14 @@
 
 int main(void)
 {
+	unsigned int	X1 = 10;
+	unsigned int	x1 = 20;
+	double			f1 = 2.1;
+	int				d1 = 35;
+	char			c1 = 'c';
+	char			*s1 = "test";
+	
+
 	// ft_putendl("Bye");
 	// printargs(5, 2, 14, 84, 97, 0, 15, 24, 48, -1);
 	// printargs(84, 51, -1);
@@ -15,11 +23,13 @@ int main(void)
 		//ft_putstr("%%%d Aa %d Bb %c Cc %s Dd%x.\n");
 	//ft_putstr("%%%d1.Aa,2%d3:Bb;4%c5!Cc?6%s7=Dd%x.\n");
 		//ft_putstr(" Aa  Bb  Cc  Dd.\n");
-	ft_printf("%X%f1.Aa,2%d3:Bb;4%c5!Cc?6%%%s7=Dd%x.\n");
-	ft_putstr("1.Aa,23:Bb;45!Cc?67=Dd.\n");
+	
+	ft_putstr("putstr :   1.Aa,2  3:Bb;4  5!Cc?6   7=Dd  .\n");
+	ft_printf("prontf : %X %f 1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n", X1, f1, d1, c1, s1, x1);
+	printf("printf : %X %f 1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n", X1, f1, d1, c1, s1, x1);
+
 	return 0;
 }
-
 /*
 int main()
 {

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   flag_process.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cseguier <cseguier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,19 +12,12 @@
 
 #include "../includes/ft_printf.h"
 
-//	void	va_start(va_list ap, last);
-//	type	va_arg(va_list ap, type);
-//	void	va_copy(va_list dest, va_list src);
-//	void	va_end(va_list ap);
-
-void printargs(int arg1, ...)
+void	*arg_seek(char c, int i_var, va_list ap)
 {
-	va_list ap;
 	int i;
 
-	va_start(ap, arg1);
-	i = arg1;
-	while(i >= 0)
+	i = -1;
+	while(++i < i_var)
 	{
 		ft_putnbr(i);
 		ft_putchar(' ');
@@ -34,15 +27,9 @@ void printargs(int arg1, ...)
 	ft_putchar('\n');
 }
 
-int		ft_printf(const char * restrict format, ...)
+int		process(char c, int i_var)
 {
-	t_p p;
-	t_lst	*list;
-	va_list ap;
 
-	list = NULL;
-	va_start(ap, format);
-	parser(format, &list, &p, ap);
 
-	return (0);
+	return (0); 
 }

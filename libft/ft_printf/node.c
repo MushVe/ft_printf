@@ -12,10 +12,10 @@
 
 #include "../includes/ft_printf.h"
 
-void	free_list(t_llist **list)
+void	free_list(t_lst **list)
 {
-	t_llist *cpy;
-	t_llist *tmp;
+	t_lst *cpy;
+	t_lst *tmp;
 
 	cpy = *list;
 	tmp = NULL;
@@ -28,16 +28,16 @@ void	free_list(t_llist **list)
 	}
 }
 
-int	new_node(char *data, int size, t_llist **list)
+int	new_node(char *data, int size, t_lst **list)
 {
-	t_llist *cpy;
-	t_llist *node;
+	t_lst *cpy;
+	t_lst *node;
 
-	ft_putendl(data);
+	//ft_putendl(data);
 
 	cpy = *list;
 		//	ft_putendl("444");
-	if (!(node = (t_llist*)ft_memalloc(sizeof(t_llist))))
+	if (!(node = (t_lst*)ft_memalloc(sizeof(t_lst))))
 		return (0);
 		//	ft_putendl("555");
 	if (!cpy)
@@ -65,9 +65,9 @@ int	new_node(char *data, int size, t_llist **list)
 	return (1);
 }
 
-char		*get_node(int aim, t_param *p)
+char		*get_node(int aim, t_p *p)
 {
-	t_llist	*cpy;
+	t_lst	*cpy;
 	int				i;
 
 	cpy = p->first;

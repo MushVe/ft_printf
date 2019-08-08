@@ -20,9 +20,9 @@ int		isflag(char c)
 	return (0);
 }
 
-int		print_node(t_param *p)
+int		print_node(t_p *p)
 {
-	t_llist	*cpy;
+	t_lst	*cpy;
 	int		i;
 
 	cpy = p->first;
@@ -36,12 +36,14 @@ int		print_node(t_param *p)
 	return (0);
 }
 
-int	parser(const char * restrict format, t_llist **list, t_param *p)
+int	parser(const char * restrict format, t_lst **list, t_p *p, va_list ap)
 {
 	int	i;
 	int	j;
+	int	i_varg;
 	int	flag;
 
+	i_varg = 1;
 	flag = 1;
 	i = -1;
 	j = 0;
@@ -53,12 +55,16 @@ int	parser(const char * restrict format, t_llist **list, t_param *p)
 			if (j != i)
 				if (!(new_node(ft_stridup(format + j, i - j), i - j, list)))
 					return (0);
-
 		}
 		else if (flag == 0)
 		{
-			while (!(isflag(format[i]))) i++;
+			while (!(isflag(format[i])))
+			{
 			// envoyer le flag pour traitement puis stocker dans node
+				process(format[i], i_varg, ap);
+				i_varg++;
+				i++;
+			}
 			flag = 1;
 			j = i + 1;
 		}
