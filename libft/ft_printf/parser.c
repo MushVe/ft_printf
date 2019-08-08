@@ -36,33 +36,30 @@ int		print_node(t_p *p)
 	return (0);
 }
 
-int	parser(const char * restrict format, t_lst **list, t_p *p, va_list ap)
+int	parser(const char * restrict frmt, t_p *p, va_list ap)
 {
 	int	i;
 	int	j;
-	int	i_varg;
 	int	flag;
 
-	i_varg = 1;
 	flag = 1;
 	i = -1;
 	j = 0;
-	while (format[++i])
+	while (frmt[++i])
 	{
-		if (flag == 1 && (format[i] == '%' || format[i] == '\0'))
+		if (flag == 1 && (frmt[i] == '%' || frmt[i] == '\0'))
 		{
 			flag = 0;
 			if (j != i)
-				if (!(new_node(ft_stridup(format + j, i - j), i - j, list)))
+				if (!(new_node(ft_stridup(frmt + j, i - j), i - j, &p->first)))
 					return (0);
 		}
 		else if (flag == 0)
 		{
-			while (!(isflag(format[i])))
+			while (!(isflag(frmt[i])))
 			{
 			// envoyer le flag pour traitement puis stocker dans node
-				process(format[i], i_varg, ap);
-				i_varg++;
+				process(frmt[i], ap);
 				i++;
 			}
 			flag = 1;
@@ -70,9 +67,8 @@ int	parser(const char * restrict format, t_lst **list, t_p *p, va_list ap)
 		}
 	}
 	if (j + 1 != i)
-		if (!(new_node(ft_stridup(format + j, i - j), i - j, list)))
+		if (!(new_node(ft_stridup(frmt + j, i - j), i - j, &p->first)))
 			return (0);
-	p->first = *list;
 //	ft_putendl("222");
 	print_node(p);
 //	ft_putendl("333");

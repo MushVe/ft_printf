@@ -33,35 +33,23 @@ int	new_node(char *data, int size, t_lst **list)
 	t_lst *cpy;
 	t_lst *node;
 
-	//ft_putendl(data);
-
 	cpy = *list;
-		//	ft_putendl("444");
 	if (!(node = (t_lst*)ft_memalloc(sizeof(t_lst))))
-		return (0);
-		//	ft_putendl("555");
+		return (0);	
 	if (!cpy)
 	{
-		//	ft_putendl("666");
 		node->str = ft_strdup(data);
 		node->size = size;
 		node->next = NULL;
 		*list = node;
 		return 1;
 	}
-		//	ft_putendl("777");
 	while (cpy->next != NULL)
-	{
-		//	ft_putendl("AAA");
 		cpy = cpy->next;
-		//	ft_putendl("888");
-	}
-//	ft_putendl("999");
 	node->str = ft_strdup(data);
 	node->size = size;
 	node->next = NULL;
 	cpy->next = node;
-		//	ft_putendl("100");
 	return (1);
 }
 

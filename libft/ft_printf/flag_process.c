@@ -12,24 +12,40 @@
 
 #include "../includes/ft_printf.h"
 
-void	*arg_seek(char c, int i_var, va_list ap)
-{
-	int i;
 
-	i = -1;
-	while(++i < i_var)
+int		process(char c, va_list ap)
+{
+	if (c == 'd' || c  == 'i')
 	{
-		ft_putnbr(i);
-		ft_putchar(' ');
-		i = va_arg(ap, int);
+			va_arg(ap, int);
 	}
-	va_end(ap);
-	ft_putchar('\n');
-}
-
-int		process(char c, int i_var)
-{
-
-
+	if (c == 'u')
+	{
+			va_arg(ap, unsigned int);
+	}
+	if (c == 'o')
+	{
+			va_arg(ap, unsigned int);
+	}
+	if (c == 'x' || c == 'X')
+	{
+			va_arg(ap, unsigned int);
+	}
+	if (c == 'c')
+	{
+			va_arg(ap, char);
+	}
+	if (c == 's')
+	{
+			va_arg(ap, char*);
+	}
+	if (c == 'p')
+	{
+			va_arg(ap, int);
+	}
+	if (c == 'f')
+	{
+			va_arg(ap, double);
+	}
 	return (0); 
 }

@@ -37,12 +37,10 @@ void printargs(int arg1, ...)
 int		ft_printf(const char * restrict format, ...)
 {
 	t_p p;
-	t_lst	*list;
 	va_list ap;
 
-	list = NULL;
 	va_start(ap, format);
-	parser(format, &list, &p, ap);
+	parser(format, &p, ap);
 
 	return (0);
 }
