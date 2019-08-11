@@ -13,7 +13,7 @@ int main(void)
 	int				d1 = 35;
 	char			c1 = 'c';
 	char			*s1 = "test";
-	
+
 
 	// ft_putendl("Bye");
 	// printargs(5, 2, 14, 84, 97, 0, 15, 24, 48, -1);
@@ -27,6 +27,8 @@ int main(void)
 	ft_putstr("putstr :   1.Aa,2  3:Bb;4  5!Cc?6   7=Dd  .\n");
 	ft_printf("prontf : %X %f 1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n", X1, f1, d1, c1, s1, x1);
 	printf("printf : %X %f 1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n", X1, f1, d1, c1, s1, x1);
+
+//	printf("%04hd", (long)4);
 
 	return 0;
 }

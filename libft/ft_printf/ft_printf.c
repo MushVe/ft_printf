@@ -34,12 +34,25 @@ void printargs(int arg1, ...)
 	ft_putchar('\n');
 }
 
+void	init(t_p *p)
+{
+	p->op_plus = 0;
+	p->op_less = 0;
+	p->op_space = 0;
+	p->op_diese = 0;
+	p->op_zero = 0;
+	p->op_presc = 0;
+	p->op_width = 0;
+	p->op_type = 0;
+}
+
 int		ft_printf(const char * restrict format, ...)
 {
 	t_p p;
 	va_list ap;
 
 	va_start(ap, format);
+	init(&p);
 	parser(format, &p, ap);
 
 	return (0);

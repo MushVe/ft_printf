@@ -26,12 +26,20 @@ typedef struct	s_lst
 typedef struct	s_p
 {
 	t_lst		*first;
+	int			op_plus;
+	int			op_less;
+	int			op_space;
+	int			op_diese;
+	int			op_zero;
+	int			op_presc;
+	int			op_width;
+	int			op_type;
 }				t_p;
 
 int				new_node(char *data, int size, t_lst **list);
 void			printargs(int arg1, ...);
 int				ft_printf(const char *restrict format, ...);
 int				parser(const char *restrict format, t_p *p, va_list ap);
-int				process(char c, va_list ap);
+int				process(char c, va_list ap, t_p *p);
 
 #endif
