@@ -42,6 +42,7 @@ void	init(t_p *p)
 	p->op_diese = 0;
 	p->op_zero = 0;
 	p->op_presc = 0;
+	p->op_point = 0;
 	p->op_width = 0;
 	p->op_type = 0;
 }

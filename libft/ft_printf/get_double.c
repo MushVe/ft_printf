@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   get_double.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cseguier <cseguier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,55 +12,23 @@
 
 #include "../includes/ft_printf.h"
 
-void	free_list(t_lst **list)
+char *get_string(char c, va_list ap)
 {
-	t_lst	*cpy;
-	t_lst	*tmp;
+	char *res;
 
-	cpy = *list;
-	tmp = NULL;
-	while (cpy)
-	{
-		tmp = cpy->next;
-		free(cpy);
-		cpy = NULL;
-		cpy = tmp;
-	}
+	res = va_arg(ap, char*);
 }
 
-int		new_node(char *data, int size, t_lst **list)
+char *get_longdouble(char c, va_list ap)
 {
-	t_lst	*cpy;
-	t_lst	*node;
+	long double res;
 
-	cpy = *list;
-	if (!(node = (t_lst*)ft_memalloc(sizeof(t_lst))))
-		return (0);
-	if (!cpy)
-	{
-		node->str = ft_strdup(data);
-		node->size = size;
-		node->next = NULL;
-		*list = node;
-		return (1);
-	}
-	while (cpy->next != NULL)
-		cpy = cpy->next;
-	node->str = ft_strdup(data);
-	node->size = size;
-	node->next = NULL;
-	cpy->next = node;
-	return (1);
+	res = va_arg(ap, long double);
 }
 
-char	*get_node(int aim, t_p *p)
+char *get_double(char c, va_list ap)
 {
-	t_lst	*cpy;
-	int		i;
+	double res;
 
-	cpy = p->first;
-	i = -1;
-	while (++i < aim && cpy)
-		cpy = cpy->next;
-	return (cpy->str);
+	res = va_arg(ap, double);
 }

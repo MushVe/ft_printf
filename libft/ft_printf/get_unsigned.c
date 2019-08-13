@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   get_unsigned.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cseguier <cseguier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,55 +12,42 @@
 
 #include "../includes/ft_printf.h"
 
-void	free_list(t_lst **list)
+char *get_ushort(char c, va_list ap)
 {
-	t_lst	*cpy;
-	t_lst	*tmp;
+	unsigned short res;
 
-	cpy = *list;
-	tmp = NULL;
-	while (cpy)
-	{
-		tmp = cpy->next;
-		free(cpy);
-		cpy = NULL;
-		cpy = tmp;
-	}
+	res = va_arg(ap, unsigned short);
+	return (convert_unsigned((unsigned long long)res));
 }
 
-int		new_node(char *data, int size, t_lst **list)
+char *get_uchar(char c, va_list ap)
 {
-	t_lst	*cpy;
-	t_lst	*node;
+	unsigned char res;
 
-	cpy = *list;
-	if (!(node = (t_lst*)ft_memalloc(sizeof(t_lst))))
-		return (0);
-	if (!cpy)
-	{
-		node->str = ft_strdup(data);
-		node->size = size;
-		node->next = NULL;
-		*list = node;
-		return (1);
-	}
-	while (cpy->next != NULL)
-		cpy = cpy->next;
-	node->str = ft_strdup(data);
-	node->size = size;
-	node->next = NULL;
-	cpy->next = node;
-	return (1);
+	res = va_arg(ap, unsigned char);
+	return (convert_unsigned((unsigned long long)res));
 }
 
-char	*get_node(int aim, t_p *p)
+char *get_ulong(char c, va_list ap)
 {
-	t_lst	*cpy;
-	int		i;
+	unsigned long res;
 
-	cpy = p->first;
-	i = -1;
-	while (++i < aim && cpy)
-		cpy = cpy->next;
-	return (cpy->str);
+	res = va_arg(ap, unsigned long);
+	return (convert_unsigned((unsigned long long)res));
+}
+
+char *get_ulonglong(char c, va_list ap)
+{
+	unsigned long long res;
+
+	res = va_arg(ap, unsigned long long);
+	return (convert_unsigned((unsigned long long)res));
+}
+
+char *get_uint(char c, va_list ap)
+{
+	unsigned int res;
+
+	res = va_arg(ap, unsigned int);
+	return (convert_unsigned((unsigned long long)res));
 }
