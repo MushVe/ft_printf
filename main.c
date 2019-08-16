@@ -9,7 +9,7 @@ int main(void)
 {
 	unsigned int	X1 = 10;
 	unsigned int	x1 = 20;
-	double			f1 = 2.1;
+	short			d2 = 2;
 	int				d1 = 35;
 	char			c1 = 'c';
 	char			*s1 = "test";
@@ -25,8 +25,8 @@ int main(void)
 		//ft_putstr(" Aa  Bb  Cc  Dd.\n");
 	
 	ft_putstr("putstr :   1.Aa,2  3:Bb;4  5!Cc?6   7=Dd  .\n");
-	ft_printf("prontf : %X %f 1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n", X1, f1, d1, c1, s1, x1);
-	printf("printf : %X %f 1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n", X1, f1, d1, c1, s1, x1);
+	ft_printf("prontf : %X %d1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n", X1, d2, d1, c1, s1, x1);
+	printf("printf : %X %d1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n", X1, d2, d1, c1, s1, x1);
 
 //	printf("%04hd", (long)4);
 

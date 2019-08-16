@@ -28,27 +28,24 @@ void	free_list(t_lst **list)
 	}
 }
 
-int		new_node(char *data, int size, t_lst **list)
+int		new_node(char *data, int size, t_p *p)
 {
 	t_lst	*cpy;
 	t_lst	*node;
 
-	cpy = *list;
+	cpy = p->first;
 	if (!(node = (t_lst*)ft_memalloc(sizeof(t_lst))))
 		return (0);
+	node->str = ft_strdup(data);
+	node->size = size;
+	node->next = NULL;
 	if (!cpy)
 	{
-		node->str = ft_strdup(data);
-		node->size = size;
-		node->next = NULL;
-		*list = node;
+		p->first = node;
 		return (1);
 	}
 	while (cpy->next != NULL)
 		cpy = cpy->next;
-	node->str = ft_strdup(data);
-	node->size = size;
-	node->next = NULL;
 	cpy->next = node;
 	return (1);
 }

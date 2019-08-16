@@ -36,6 +36,7 @@ void printargs(int arg1, ...)
 
 void	init(t_p *p)
 {
+	p->first = NULL;
 	p->op_plus = 0;
 	p->op_less = 0;
 	p->op_space = 0;
@@ -51,6 +52,7 @@ int		ft_printf(const char * restrict format, ...)
 {
 	t_p p;
 	va_list ap;
+
 
 	va_start(ap, format);
 	init(&p);

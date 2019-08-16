@@ -38,25 +38,22 @@ typedef struct	s_p
 	int			op_type;
 }				t_p;
 
-int				new_node(char *data, int size, t_lst **list);
+int				new_node(char *data, int size, t_p *p);
 void			printargs(int arg1, ...);
 int				ft_printf(const char *restrict format, ...);
 int				parser(const char *restrict format, t_p *p, va_list ap);
 int				process(char c, va_list ap, t_p *p);
-char			*get_ushort(char c, va_list ap);
-char			*get_uchar(char c, va_list ap);
 char			*get_ulong(char c, va_list ap);
 char			*get_ulonglong(char c, va_list ap);
 char			*get_uint(char c, va_list ap);
-char			*get_short(char c, va_list ap);
-char			*get_char(char c, va_list ap);
 char			*get_string(char c, va_list ap);
 char			*get_long(char c, va_list ap);
 char			*get_longlong(char c, va_list ap);
+char			*get_char(char c, va_list ap);
 char			*get_int(char c, va_list ap);
 char			*get_double(char c, va_list ap);
 char			*get_longdouble(char c, va_list ap);
-char			*convert(long long n);
+char			*convert_signed(long long n);
 char			*convert_unsigned(unsigned long long n);
 
 #endif

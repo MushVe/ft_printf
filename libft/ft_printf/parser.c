@@ -99,7 +99,7 @@ int	parser(const char * restrict frmt, t_p *p, va_list ap)
 		{
 			flag = 0;
 			if (j != i)
-				if (!(new_node(ft_stridup(frmt + j, i - j), i - j, &p->first)))
+				if (!(new_node(ft_stridup(frmt + j, i - j), i - j, p)))
 					return (0);
 		}
 		else if (flag == 0)
@@ -117,7 +117,7 @@ int	parser(const char * restrict frmt, t_p *p, va_list ap)
 		}
 	}
 	if (j + 1 != i)
-		if (!(new_node(ft_stridup(frmt + j, i - j), i - j, &p->first)))
+		if (!(new_node(ft_stridup(frmt + j, i - j), i - j, p)))
 			return (0);
 	print_node(p);
 	return (0);

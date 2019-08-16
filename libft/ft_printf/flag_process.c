@@ -14,43 +14,45 @@
 
 int		process(char c, va_list ap, t_p *p)
 {
+	char *res;
+
+	res = NULL;
 	if (c == 'd' || c  == 'i' || c == 'p')
 	{
-		if (p->op_type == 11)
-			get_short(c, ap);
-		if (p->op_type == 12)
-			get_char(c, ap);
 		if (p->op_type == 21)
-			get_long(c, ap);
+			res = get_long(c, ap);
 		if (p->op_type == 22)
-			get_longlong(c, ap);
-		get_int(c, ap);
+			res = get_longlong(c, ap);
+		res = get_int(c, ap);
 	}
 	if (c == 'u' || c == 'o' || c == 'x' || c == 'X')
 	{
-		if (p->op_type == 11)
-			get_ushort(c, ap);
-		if (p->op_type == 12)
-			get_uchar(c, ap);
 		if (p->op_type == 21)
-			get_ulong(c, ap);
+			res = get_ulong(c, ap);
 		if (p->op_type == 22)
-			get_ulonglong(c, ap);
-		get_uint(c, ap);
+			res = get_ulonglong(c, ap);
+		res = get_uint(c, ap);
 	}
 	if (c == 'c')
 	{
-		get_char(c, ap);
+		res = get_char(c, ap);
 	}
 	if (c == 's')
 	{
-		get_string(c, ap);
+		res = get_string(c, ap);
 	}
 	if (c == 'f')
 	{
 		if (p->op_type != 0)
-			get_longdouble(c, ap);
-		get_double(c, ap);
+			res = get_longdouble(c, ap);
+		res = get_double(c, ap);
 	}
+	if (c == '%')
+	{
+		if (!(res = ft_strdup("%")))
+			return (1);
+	}
+	if (!(new_node(res, ft_strlen(res), p)))
+		return (0);
 	return (0); 
 }
