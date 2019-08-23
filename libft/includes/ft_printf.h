@@ -32,7 +32,7 @@ typedef struct	s_p
 	int			op_space;
 	int			op_diese;
 	int			op_zero;
-	int			op_presc;
+	int			op_preci;
 	int			op_point;
 	int			op_width;
 	int			op_type;
