@@ -23,7 +23,7 @@ char		*ft_itoa_base(unsigned long long nb, int base, int alpha)
 		return (0);
 	if (alpha == 1)
 		tab = ft_strdup("0123456789abcdef");
-	else 
+	else
 		tab = ft_strdup("0123456789ABCDEF");
 	while ((nb / base) && (++i < 21))
 	{
