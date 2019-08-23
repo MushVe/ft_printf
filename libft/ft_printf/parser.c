@@ -71,13 +71,11 @@ int	get_options(t_p *p, const char *frmt)
 	else if (frmt[0] == ' ') p->op_space = 1;
 	else if (frmt[0] == '#') p->op_diese = 1;
 	else if (frmt[0] == '0') p->op_zero = 1;
+	else if (frmt[0] == '.') p->op_point = 1;
 	else if (ft_isdigit(frmt[0]) && p->op_point == 0 && p->op_presc == 0)
-	{
-			p->op_presc = ft_atoi(frmt);
-			p->op_point = 1;
-	}
+		p->op_presc = ft_atoi(frmt);
 	else if (ft_isdigit(frmt[0]) && p->op_point == 1 && p->op_width == 0)
-		p->op_width = ft_atoi(frmt);
+	 	p->op_width = ft_atoi(frmt);
 	else if (frmt[0] == 'h' || frmt[0] == 'l' || frmt[0] == 'L')
 		get_type(p, frmt[0]);
 	else return (0); //error

@@ -27,10 +27,14 @@ int main(void)
 
 	// ft_putendl("");
 
-	ft_printf("prontf : %#-X %#-x %+hd % hhd %0ld %lld %-c %-i %s %X %x\n",
-	X1, x1, (short)d1, (char)d2, (long)d3, (long long)d4, c1, d5, s1, X2, x2);
-	   printf("printf : %#-X %#-x %+hd % hhd %0ld %lld %-c %-i %s %X %x\n",
-	X1, x1, (short)d1, (char)d2, (long)d3, (long long)d4, c1, d5, s1, X2, x2);
+	// ft_printf("prontf : .%#-X %#-x %X %x %+hd % hhd %0ld %lld %-c %-i %s\n",
+	// X1, x1, X2, x2, (short)d1, (char)d2, (long)d3, (long long)d4, c1, d5, s1);
+
+	//    printf("printf : .%#-10.1X.%#5.8x.%012X.%0.0x.%+hd.%.hhd.%0ld.%lld.%-c.%-i.%s.\n",
+	// X1, x1, X2, x2, (short)d1, (char)d2, (long)d3, (long long)d4, c1, d5, s1);
+
+	printf("printf : .%10.1X.%5.8x.%12X.%0.0x.%12.hd.%.12hhd.%ld.%lld.%c.%i.%s.\n",
+	X1, x1, X2, x2, (short)d1, (char)d2, (long)d3, (long long)d4, c1, d5, s1);
 
 	// ft_putendl("");
 
