@@ -24,12 +24,13 @@ char *get_string(char c, va_list ap)
 
 char *get_char(char c, va_list ap)
 {
-	int res;
-
+	char *res;
 	(void)c;
 
-	res = va_arg(ap, int);
-	return ("YES");
+	if (!(res = ft_strnew(1)))
+		return  (0);
+	res[0] = va_arg(ap, int);
+	return (res);
 }
 
 char *get_longdouble(char c, va_list ap)

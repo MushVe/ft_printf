@@ -20,10 +20,10 @@ int		process(char c, va_list ap, t_p *p)
 	if (c == 'd' || c  == 'i' || c == 'p')
 	{
 		if (p->op_type == 21)
-			res = get_long(c, ap);
+			res = get_long(ap);
 		if (p->op_type == 22)
-			res = get_longlong(c, ap);
-		res = get_int(c, ap);
+			res = get_longlong(ap);
+		res = get_int(ap);
 	}
 	if (c == 'u' || c == 'o' || c == 'x' || c == 'X')
 	{

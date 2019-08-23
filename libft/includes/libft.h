@@ -37,6 +37,7 @@ int				ft_isascii(int c);
 int				ft_isdigit(int c);
 int				ft_isprint(int c);
 char			*ft_itoa(int n);
+char			*ft_itoa_base(unsigned long long nb, int base, int alpha);
 char			*ft_lowcase(char *str);
 void			ft_lstadd(t_list **alst, t_list *link);
 void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));

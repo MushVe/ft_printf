@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/../includes/libft.h"
+#include "../includes/libft.h"
 
 int	ft_isprint(int c)
 {

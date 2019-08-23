@@ -12,32 +12,80 @@
 
 #include "../includes/ft_printf.h"
 
-char *get_ulong(char c, va_list ap)
+char	*get_uint(char c, va_list ap)
 {
-	unsigned long res;
+	unsigned int	nbr;
+	char			*res;
 
-	(void)c;
-
-	res = va_arg(ap, unsigned long);
-	return (convert_unsigned((unsigned long long)res));
+	nbr = va_arg(ap, unsigned int);
+	if (c == 'x')
+	{
+		if (!(res = ft_itoa_base(nbr, 16, 1)))
+			return (0);
+	}
+	else if (c == 'X')
+	{
+		if (!(res = ft_itoa_base(nbr, 16, 0)))
+			return (0);
+	}
+	else if (c == 'o')
+	{
+		if (!(res = ft_itoa_base(nbr, 8, 1)))
+			return (0);
+	}
+	else if (!(res = convert_unsigned((unsigned long long)nbr)))
+		return (0);
+	return (res);
 }
 
-char *get_ulonglong(char c, va_list ap)
+char	*get_ulong(char c, va_list ap)
 {
-	unsigned long long res;
+	unsigned long	nbr;
+	char			*res;
 
-	(void)c;
-
-	res = va_arg(ap, unsigned long long);
-	return (convert_unsigned((unsigned long long)res));
+	nbr = va_arg(ap, unsigned long);
+	if (c == 'x')
+	{
+		if (!(res = ft_itoa_base(nbr, 16, 1)))
+			return (0);
+	}
+	else if (c == 'X')
+	{
+		if (!(res = ft_itoa_base(nbr, 16, 0)))
+			return (0);
+	}
+	else if (c == 'o')
+	{
+		if (!(res = ft_itoa_base(nbr, 8, 1)))
+			return (0);
+	}
+	else if (!(res = convert_unsigned((unsigned long long)nbr)))
+		return (0);
+	return (res);
 }
 
-char *get_uint(char c, va_list ap)
+char	*get_ulonglong(char c, va_list ap)
 {
-	unsigned int res;
+	unsigned long long	nbr;
+	char				*res;
 
-	(void)c;
-
-	res = va_arg(ap, unsigned int);
-	return (convert_unsigned((unsigned long long)res));
+	nbr = va_arg(ap, unsigned long long);
+	if (c == 'x')
+	{
+		if (!(res = ft_itoa_base(nbr, 16, 1)))
+			return (0);
+	}
+	else if (c == 'X')
+	{
+		if (!(res = ft_itoa_base(nbr, 16, 0)))
+			return (0);
+	}
+	else if (c == 'o')
+	{
+		if (!(res = ft_itoa_base(nbr, 8, 1)))
+			return (0);
+	}
+	else if (!(res = convert_unsigned((unsigned long long)nbr)))
+		return (0);
+	return (res);
 }

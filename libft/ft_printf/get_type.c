@@ -12,32 +12,35 @@
 
 #include "../includes/ft_printf.h"
 
-char *get_long(char c, va_list ap)
+char	*get_int(va_list ap)
 {
-	long res;
+	int		nbr;
+	char	*res;
 
-	(void)c;
-
-	res = va_arg(ap, long);
-	return (convert_signed((long long)res));
+	nbr = va_arg(ap, int);
+	if (!(res = convert_signed((long long)nbr)))
+		return (0);
+	return (res);
 }
 
-char *get_longlong(char c, va_list ap)
+char	*get_long(va_list ap)
 {
-	long long res;
+	long	nbr;
+	char	*res;
 
-	(void)c;
-
-	res = va_arg(ap, long long);
-	return (convert_signed((long long)res));
+	nbr = va_arg(ap, long);
+	if (!(res = convert_signed((long long)nbr)))
+		return (0);
+	return (res);
 }
 
-char *get_int(char c, va_list ap)
+char	*get_longlong(va_list ap)
 {
-	int res;
+	long long	nbr;
+	char		*res;
 
-	(void)c;
-
-	res = va_arg(ap, int);
-	return (convert_signed((long long)res));
+	nbr = va_arg(ap, long long);
+	if (!(res = convert_signed((long long)nbr)))
+		return (0);
+	return (res);
 }
