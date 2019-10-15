@@ -53,7 +53,6 @@ int		ft_printf(const char * restrict format, ...)
 	t_p p;
 	va_list ap;
 
-
 	va_start(ap, format);
 	init(&p);
 	parser(format, &p, ap);

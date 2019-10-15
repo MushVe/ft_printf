@@ -66,20 +66,32 @@ int	get_type(t_p *p, char c)
 int	get_options(t_p *p, const char *frmt)
 {
 	// stocker options dans variables (erreurs pas gerees)
+	//ft_putendl("111");
 	if (frmt[0] == '+') p->op_plus = 1;
 	else if (frmt[0] == '-') p->op_less = 1;
 	else if (frmt[0] == ' ') p->op_space = 1;
 	else if (frmt[0] == '#') p->op_diese = 1;
-	else if (frmt[0] == '0') p->op_zero = 1;
+	else if (frmt[0] == '0' && p->op_width == 0 && p->op_preci == 0)
+		p->op_zero = 1;
 	else if (frmt[0] == '.') p->op_point = 1;
-	else if (ft_isdigit(frmt[0]) && p->op_point == 0 && p->op_preci == 0)
-		p->op_preci = ft_atoi(frmt);
-	else if (ft_isdigit(frmt[0]) && p->op_point == 1 && p->op_width == 0)
+	else if (ft_isdigit(frmt[0]) && p->op_point == 0 && p->op_width == 0)
 	 	p->op_width = ft_atoi(frmt);
+	else if (ft_isdigit(frmt[0]) && p->op_point == 1 && p->op_preci == 0)
+		p->op_preci = ft_atoi(frmt);
 	else if (frmt[0] == 'h' || frmt[0] == 'l' || frmt[0] == 'L')
-		get_type(p, frmt[0]);
-	else return (0); //error
-	return (0);
+	{
+			get_type(p, frmt[0]);
+			p->op_type = 1;
+	}
+	else if (!(ft_isdigit(frmt[0]) && (p->op_width != 0 || p->op_preci != 0)))
+	{
+		printf("\tzr> %d\tpr> %d\tpt> %d\twh> %d\terror\n",
+			p->op_zero, p->op_preci, p->op_point, p->op_width);
+		return (0); //error
+	}
+	printf("\tzr> %d\tpr> %d\tpt> %d\twh> %d\n",
+		p->op_zero, p->op_preci, p->op_point, p->op_width);	
+	return (1);
 }
 
 int	parser(const char * restrict frmt, t_p *p, va_list ap)
@@ -104,6 +116,7 @@ int	parser(const char * restrict frmt, t_p *p, va_list ap)
 		{
 			while (!(isflag(frmt[i])))
 			{
+				printf("i : %c", frmt[i]);
 				if (!(get_options(p, frmt + i)))
 					return (0); //error
 				i++;

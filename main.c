@@ -8,17 +8,68 @@
 int main(void)
 {
 	unsigned int	X1 = 15680;
-	unsigned int	X2 = 2990;
 	unsigned int	x1 = 15680;
-	unsigned int	x2 = 2990;
+//	unsigned int	X2 = 2990;
+//	unsigned int	x2 = 2990;
 	int				d1 = 35;
 	int				d2 = 2;
-	int				d3 = 4096;
-	int				d4 = 857;
-	int				d5 = 41;
+//	int				d3 = 4096;
+//	int				d4 = 857;
+//	int				d5 = 41;
 	char			c1 = 'c';
 	char			*s1 = "test";
 
+	ft_printf("prontf > .%10.1X.", X1);	printf("\n");
+	printf("printf > .%10.1X.", X1);	printf("\n");
+
+	ft_printf("prontf > .%13.1X.", X1);	printf("\n");
+	printf("printf > .%13.1X.", X1);	printf("\n");
+
+	ft_printf("prontf > .%010X.", X1);	printf("\n");
+	printf("printf > .%010X.", X1);	printf("\n");
+
+	ft_printf("prontf > .%012X.", X1);	printf("\n");
+	printf("printf > .%012X.", X1);	printf("\n");
+
+	ft_printf("prontf > .%-10.1X.", X1);	printf("\n");
+	printf("printf > .%-10.1X.", X1);	printf("\n");
+
+	/*ft_printf("prontf > .%5.8x.", x1);	printf("\n");
+	printf("printf > .%5.8x.", x1);	printf("\n");
+
+	ft_printf("prontf > .%12X.", X2);	printf("\n");
+	printf("printf > .%12X.", X2);	printf("\n");
+	
+	ft_printf("prontf > .%0.0x.", x2);	printf("\n");
+	printf("printf > .%0.0x.", x2);	printf("\n");
+	
+	ft_printf("prontf > .%12.hd.", (short)d1);	printf("\n");
+	printf("printf > .%12.hd.", (short)d1);	printf("\n");
+	
+	ft_printf("prontf > .%.12hhd.", (char)d2);	printf("\n");
+	printf("printf > .%.12hhd.", (char)d2);	printf("\n");
+	
+	ft_printf("prontf > .%ld.", (long)d3);	printf("\n");
+	printf("printf > .%ld.", (long)d3);	printf("\n");
+	
+	ft_printf("prontf > .%lld.", (long long)d4);	printf("\n");
+	printf("printf > .%lld.", (long long)d4);	printf("\n");
+	
+	ft_printf("prontf > .%i.", d5);	printf("\n");
+	printf("printf > .%i.", d5);	printf("\n");
+	
+	ft_printf("prontf > .%c.", c1);	printf("\n");
+	printf("printf > .%c.", c1);	printf("\n");
+	
+	ft_printf("prontf > .%s.", s1);	printf("\n");
+	printf("printf > .%s.", s1);	printf("\n");*/
+	
+	printf("\n");
+	ft_printf("prontf : %X %d1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n",
+	 				X1, d2, d1, c1, s1, x1);
+	printf("printf : %X %d1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n",
+	 				X1, d2, d1, c1, s1, x1);
+	
 
 	// ft_printf("prontf : %X %d1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n",
 	// 				X1, d2, d1, c1, s1, x1);
@@ -32,16 +83,6 @@ int main(void)
 
 	//    printf("printf : .%#-10.1X.%#5.8x.%012X.%0.0x.%+hd.%.hhd.%0ld.%lld.%-c.%-i.%s.\n",
 	// X1, x1, X2, x2, (short)d1, (char)d2, (long)d3, (long long)d4, c1, d5, s1);
-
-	printf("printf : .%10.1X.%5.8x.%12X.%0.0x.%12.hd.%.12hhd.%ld.%lld.%c.%i.%s.\n",
-	X1, x1, X2, x2, (short)d1, (char)d2, (long)d3, (long long)d4, c1, d5, s1);
-
-	// ft_putendl("");
-
-	// ft_printf("prontf : %X %d1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n",
-	// 				X1, d2, d1, c1, s1, x1);
-	//    printf("printf : %X %d1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n",
-	// 				X1, d2, d1, c1, s1, x1);
 
 	return 0;
 }
