@@ -9,13 +9,13 @@ int main(void)
 {
 	unsigned int	X1 = 15680;
 	unsigned int	x1 = 15680;
-//	unsigned int	X2 = 2990;
-//	unsigned int	x2 = 2990;
+	unsigned int	X2 = 2990;
+	unsigned int	x2 = 2990;
 	int				d1 = 35;
 	int				d2 = 2;
-//	int				d3 = 4096;
-//	int				d4 = 857;
-//	int				d5 = 41;
+	int				d3 = 4096;
+	int				d4 = 857;
+	int				d5 = 41;
 	char			c1 = 'c';
 	char			*s1 = "test";
 
@@ -34,7 +34,7 @@ int main(void)
 	ft_printf("prontf > .%-10.1X.", X1);	printf("\n");
 	printf("printf > .%-10.1X.", X1);	printf("\n");
 
-	/*ft_printf("prontf > .%5.8x.", x1);	printf("\n");
+	ft_printf("prontf > .%5.8x.", x1);	printf("\n");
 	printf("printf > .%5.8x.", x1);	printf("\n");
 
 	ft_printf("prontf > .%12X.", X2);	printf("\n");
@@ -62,7 +62,7 @@ int main(void)
 	printf("printf > .%c.", c1);	printf("\n");
 	
 	ft_printf("prontf > .%s.", s1);	printf("\n");
-	printf("printf > .%s.", s1);	printf("\n");*/
+	printf("printf > .%s.", s1);	printf("\n");
 	
 	printf("\n");
 	ft_printf("prontf : %X %d1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n",
