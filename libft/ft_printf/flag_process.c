@@ -12,6 +12,19 @@
 
 #include "../includes/ft_printf.h"
 
+char	*add_preci(char *res, t_p *p, char c)
+{
+	int i;
+
+	i = -1 + ft_strlen(res);
+	if (ft_strlen(res) > (unsigned long)p->op_preci && c == 's')
+		res = ft_strsub(res, 0, p->op_preci);
+	if (ft_strlen(res) < (unsigned long)p->op_preci && c != 's')
+		while (++i < p->op_preci)
+			res = ft_strjoin("0", res, 2);
+	return (res);
+}
+
 char	*add_width(char *res, t_p *p)
 {
 	int	i;
@@ -28,7 +41,7 @@ char	*add_width(char *res, t_p *p)
 		while (++i < p->op_width)
 			res = ft_strjoin(" ", res, 2);
 	
-	return res;
+	return (res);
 }
 
 int		process(char c, va_list ap, t_p *p)
@@ -71,6 +84,8 @@ int		process(char c, va_list ap, t_p *p)
 		if (!(res = ft_strdup("%")))
 			return (1);
 	}
+	if (p->op_preci != 0)
+		res = add_preci(res, p, c);
 	if (p->op_width != 0)
 		res = add_width(res, p);
 	if (!(new_node(res, ft_strlen(res), p)))

@@ -19,55 +19,61 @@ int main(void)
 	char			c1 = 'c';
 	char			*s1 = "test";
 
-	ft_printf("prontf > .%10.1X.", X1);	printf("\n");
-	printf("printf > .%10.1X.", X1);	printf("\n");
+	ft_printf("me > .%10.1X.", X1);	printf("\n");
+	printf("pf > .%10.1X.", X1);	printf("\n");
 
-	ft_printf("prontf > .%13.1X.", X1);	printf("\n");
-	printf("printf > .%13.1X.", X1);	printf("\n");
+	ft_printf("me > .%13.1X.", X1);	printf("\n");
+	printf("pf > .%13.1X.", X1);	printf("\n");
 
-	ft_printf("prontf > .%010X.", X1);	printf("\n");
-	printf("printf > .%010X.", X1);	printf("\n");
+	ft_printf("me > .%10.7d.", X1);	printf("\n");
+	printf("pf > .%10.7d.", X1);	printf("\n");
 
-	ft_printf("prontf > .%012X.", X1);	printf("\n");
-	printf("printf > .%012X.", X1);	printf("\n");
+	ft_printf("me > .%010X.", X1);	printf("\n");
+	printf("pf > .%010X.", X1);	printf("\n");
 
-	ft_printf("prontf > .%-10.1X.", X1);	printf("\n");
-	printf("printf > .%-10.1X.", X1);	printf("\n");
+	ft_printf("me > .%012X.", X1);	printf("\n");
+	printf("pf > .%012X.", X1);	printf("\n");
 
-	ft_printf("prontf > .%5.8x.", x1);	printf("\n");
-	printf("printf > .%5.8x.", x1);	printf("\n");
+	ft_printf("me > .%-10.1X.", X1);	printf("\n");
+	printf("pf > .%-10.1X.", X1);	printf("\n");
 
-	ft_printf("prontf > .%12X.", X2);	printf("\n");
-	printf("printf > .%12X.", X2);	printf("\n");
+	ft_printf("me > .%5.8x.", x1);	printf("\n");
+	printf("pf > .%5.8x.", x1);	printf("\n");
+
+	ft_printf("me > .%12X.", X2);	printf("\n");
+	printf("pf > .%12X.", X2);	printf("\n");
 	
-	ft_printf("prontf > .%0.0x.", x2);	printf("\n");
-	printf("printf > .%0.0x.", x2);	printf("\n");
+	ft_printf("me > .%0.0x.", x2);	printf("\n");
+	printf("pf > .%0.0x.", x2);	printf("\n");
 	
-	ft_printf("prontf > .%12.hd.", (short)d1);	printf("\n");
-	printf("printf > .%12.hd.", (short)d1);	printf("\n");
+	ft_printf("me > .%12.hd.", (short)d1);	printf("\n");
+	printf("pf > .%12.hd.", (short)d1);	printf("\n");
 	
-	ft_printf("prontf > .%.12hhd.", (char)d2);	printf("\n");
-	printf("printf > .%.12hhd.", (char)d2);	printf("\n");
+	ft_printf("me > .%.12hhd.", (char)d2);	printf("\n");
+	printf("pf > .%.12hhd.", (char)d2);	printf("\n");
 	
-	ft_printf("prontf > .%ld.", (long)d3);	printf("\n");
-	printf("printf > .%ld.", (long)d3);	printf("\n");
+	ft_printf("me > .%ld.", (long)d3);	printf("\n");
+	printf("pf > .%ld.", (long)d3);	printf("\n");
 	
-	ft_printf("prontf > .%lld.", (long long)d4);	printf("\n");
-	printf("printf > .%lld.", (long long)d4);	printf("\n");
+	ft_printf("me > .%lld.", (long long)d4);	printf("\n");
+	printf("pf > .%lld.", (long long)d4);	printf("\n");
 	
-	ft_printf("prontf > .%i.", d5);	printf("\n");
-	printf("printf > .%i.", d5);	printf("\n");
+	ft_printf("me > .%i.", d5);	printf("\n");
+	printf("pf > .%i.", d5);	printf("\n");
 	
-	ft_printf("prontf > .%c.", c1);	printf("\n");
-	printf("printf > .%c.", c1);	printf("\n");
+	ft_printf("me > .%c.", c1);	printf("\n");
+	printf("pf > .%c.", c1);	printf("\n");
 	
-	ft_printf("prontf > .%s.", s1);	printf("\n");
-	printf("printf > .%s.", s1);	printf("\n");
+	ft_printf("me > .%.3s.", s1);	printf("\n");
+	printf("pf > .%.3s.", s1);	printf("\n");
+
+	ft_printf("me > .%.5s.", s1);	printf("\n");
+	printf("pf > .%.5s.", s1);	printf("\n");
 	
 	printf("\n");
-	ft_printf("prontf : %X %d1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n",
+	ft_printf("me : %X %d1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n",
 	 				X1, d2, d1, c1, s1, x1);
-	printf("printf : %X %d1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n",
+	printf("pf : %X %d1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n",
 	 				X1, d2, d1, c1, s1, x1);
 	
 
