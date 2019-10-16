@@ -14,7 +14,7 @@
 
 char	*add_preci(char *res, t_p *p, char c)
 {
-	int 	i;
+	int		i;
 	char	*it;
 
 	it = NULL;
@@ -34,11 +34,10 @@ char	*add_preci(char *res, t_p *p, char c)
 
 char	*add_width(char *res, t_p *p)
 {
-	int	i;
+	int		i;
 	char	*it;
 
 	it = NULL;
-
 	i = -1 + ft_strlen(res);
 	if (p->op_less == 1)
 		while (++i < p->op_width)
@@ -46,7 +45,7 @@ char	*add_width(char *res, t_p *p)
 	else if (p->op_zero == 1)
 	{
 		while (++i < p->op_width)
-		res = ft_strjoin("0", res, 2);
+			res = ft_strjoin("0", res, 2);
 		if ((it = ft_strchr(res, '-')))
 		{
 			it[0] = '0';
@@ -56,7 +55,6 @@ char	*add_width(char *res, t_p *p)
 	else
 		while (++i < p->op_width)
 			res = ft_strjoin(" ", res, 2);
-	
 	return (res);
 }
 
@@ -85,7 +83,7 @@ int		process(char c, va_list ap, t_p *p)
 	char *res;
 
 	res = NULL;
-	if (c == 'd' || c  == 'i' || c == 'p')
+	if (c == 'd' || c == 'i' || c == 'p')
 	{
 		if (p->op_type == 21)
 			res = get_long(ap);
@@ -130,5 +128,5 @@ int		process(char c, va_list ap, t_p *p)
 		res = add_width(res, p);
 	if (!(new_node(res, ft_strlen(res), p)))
 		return (0);
-	return (0); 
+	return (0);
 }
