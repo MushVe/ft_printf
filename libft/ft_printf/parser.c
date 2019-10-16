@@ -85,13 +85,7 @@ int	get_options(t_p *p, const char *frmt)
 	}
 	else if (!(ft_isdigit(frmt[0]) && p->op_type == 0
 				&& (p->op_width != 0 || p->op_preci != 0)))
-	{
-//		printf("\tzr> %d\tpr> %d\tpt> %d\twh> %d\terror\n",
-//			p->op_zero, p->op_preci, p->op_point, p->op_width);
 		return (0); //error
-	}
-//	printf("\tzr> %d\tpr> %d\tpt> %d\twh> %d\n",
-//		p->op_zero, p->op_preci, p->op_point, p->op_width);	
 	return (1);
 }
 
@@ -117,7 +111,6 @@ int	parser(const char * restrict frmt, t_p *p, va_list ap)
 		{
 			while (!(isflag(frmt[i])))
 			{
-				//printf("i : %c", frmt[i]);
 				if (!(get_options(p, frmt + i)))
 					return (0); //error
 				i++;
