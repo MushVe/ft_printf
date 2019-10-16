@@ -23,11 +23,11 @@ char	*add_preci(char *res, t_p *p, char c)
 		res = ft_strsub(res, 0, p->op_preci);
 	if (ft_strlen(res) < (unsigned long)p->op_preci && c != 's')
 		while (++i < p->op_preci)
-			res = ft_strjoin("0", res, 2);
+			res = ft_strjoin("0", res, 0);
 	if ((it = ft_strchr(res, '-')) && (size_t)p->op_preci + 1 > ft_strlen(res))
 	{
 		it[0] = '0';
-		res = ft_strjoin("-", res, 2);
+		res = ft_strjoin("-", res, 0);
 	}
 	return (res);
 }
@@ -41,11 +41,11 @@ char	*add_width(char *res, t_p *p)
 	i = -1 + ft_strlen(res);
 	if (p->op_less == 1)
 		while (++i < p->op_width)
-			res = ft_strjoin(res, " ", 1);
+			res = ft_strjoin(res, " ", 0);
 	else if (p->op_zero == 1)
 	{
 		while (++i < p->op_width)
-			res = ft_strjoin("0", res, 2);
+			res = ft_strjoin("0", res, 0);
 		if ((it = ft_strchr(res, '-')))
 		{
 			it[0] = '0';
@@ -54,16 +54,16 @@ char	*add_width(char *res, t_p *p)
 	}
 	else
 		while (++i < p->op_width)
-			res = ft_strjoin(" ", res, 2);
+			res = ft_strjoin(" ", res, 0);
 	return (res);
 }
 
 char	*add_x(char *res, char c)
 {
 	if (c == 'x')
-		res = ft_strjoin("0x", res, 2);
+		res = ft_strjoin("0x", res, 0);
 	if (c == 'X')
-		res = ft_strjoin("0X", res, 2);
+		res = ft_strjoin("0X", res, 0);
 	return (res);
 }
 
@@ -72,9 +72,9 @@ char	*add_sign(char *res, t_p *p)
 	if (ft_strchr(res, '-'))
 		return (res);
 	if (p->op_plus == 1)
-		res = ft_strjoin("+", res, 2);
+		res = ft_strjoin("+", res, 0);
 	else if (p->op_space == 1)
-		res = ft_strjoin(" ", res, 2);
+		res = ft_strjoin(" ", res, 0);
 	return (res);
 }
 
@@ -116,15 +116,15 @@ int		process(char c, va_list ap, t_p *p)
 	if (c == '%')
 	{
 		if (!(res = ft_strdup("%")))
-			return (1);
+			return (0);
 	}
-	if (p->op_plus == 1 || p->op_space == 1)
+	if ((p->op_plus == 1 || p->op_space == 1) && p->flag!= c)
 		res = add_sign(res, p);
-	if (p->op_preci != 0)
+	if ((p->op_preci != 0) && p->flag!= c)
 		res = add_preci(res, p, c);
-	if (p->op_diese == 1)
+	if ((p->op_diese == 1) && p->flag!= c)
 		res = add_x(res, c);
-	if (p->op_width != 0)
+	if ((p->op_width != 0) && p->flag!= c)
 		res = add_width(res, p);
 	if (!(new_node(res, ft_strlen(res), p)))
 		return (0);

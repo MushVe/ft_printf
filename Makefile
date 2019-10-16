@@ -14,15 +14,17 @@ NAME = printf
 
 LIBFT = libft/libftprintf.a
 
-FILE = main.c
+#FILE = main.c
+FILE = Main_test_printf.c
 
 INC = -I libft -I /usr/local/include/mlx.h
 
 SRC = $(FILE:%=%)
 OBJ = $(FILE:%.c=objs/%.o)
 
-FLAG = -Wall -Werror -Wextra
-CC = gcc $(FLAG) $(INC)
+#FLAG = -Wall -Werror -Wextra
+#CC = gcc $(FLAG) $(INC)
+CC = gcc $(INC)
 
 RM = rm -f
 

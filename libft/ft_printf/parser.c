@@ -12,11 +12,14 @@
 
 #include "../includes/ft_printf.h"
 
-int		isflag(char c)
+int		isflag(char c, t_p *p)
 {
 	if (c == 'c' || c == 's' || c == 'd' || c == 'i' || c == 'o'
 		|| c == 'u' || c == 'x' || c == 'X' || c == 'f' || c == '%')
+	{
+		p->flag = c;
 		return (1);
+	}
 	return (0);
 }
 
@@ -26,13 +29,14 @@ int		print_node(t_p *p)
 	int		i;
 
 	cpy = p->first;
-	i = -1;
+	i = 0;
 	while (cpy)
 	{
 		ft_putstr(cpy->str);
+		i = i + ft_strlen(cpy->str);
 		cpy = cpy->next;
 	}
-	return (0);
+	return (i);
 }
 
 int		get_type(t_p *p, char c)
@@ -113,7 +117,7 @@ int		parser(const char *restrict frmt, t_p *p, va_list ap)
 		}
 		else if (flag == 0)
 		{
-			while (!(isflag(frmt[i])))
+			while (!(isflag(frmt[i], p)))
 			{
 				if (!(get_options(p, frmt + i)))
 					return (0); //error
@@ -128,6 +132,6 @@ int		parser(const char *restrict frmt, t_p *p, va_list ap)
 	if (j != i)
 		if (!(new_node(ft_stridup(frmt + j, i - j), i - j, p)))
 			return (0);
-	print_node(p);
-	return (0);
+	i = print_node(p);
+	return (i);
 }

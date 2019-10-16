@@ -7,7 +7,8 @@
 
 int main(void)
 {
-	unsigned int	X1 = 15680;
+	
+/*	unsigned int	X1 = 15680;
 	unsigned int	x1 = -15680;
 	unsigned int	X2 = 2990;
 	unsigned int	x2 = 2990;
@@ -17,9 +18,9 @@ int main(void)
 	int				d4 = 857;
 	int				d5 = 41;
 	char			c1 = 'c';
-	char			*s1 = "test";
+	char			*s1 = "test";*/
 
-	ft_printf("me > .%d.", X1); printf("\n");
+/*	ft_printf("me > .%d.", X1); printf("\n");
 	printf("pf > .%d.", X1); printf("\n");
 	ft_printf("me > .%+10.1d.", X1); printf("\n");
 	printf("pf > .%+10.1d.", X1); printf("\n");
@@ -83,7 +84,7 @@ int main(void)
 	ft_printf("me : %X %d1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n",
 	 				X1, d2, d1, c1, s1, x1);
 	printf("pf : %X %d1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n",
-	 				X1, d2, d1, c1, s1, x1);
+	 				X1, d2, d1, c1, s1, x1);*/
 	
 
 	// ft_printf("prontf : %X %d1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n",

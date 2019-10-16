@@ -48,15 +48,17 @@ void	init(t_p *p)
 	p->op_point = 0;
 	p->op_width = 0;
 	p->op_type = 0;
+	p->flag = 0;
 }
 
 int		ft_printf(const char *restrict format, ...)
 {
 	t_p		p;
 	va_list	ap;
+	int		i;
 
 	va_start(ap, format);
 	init(&p);
-	parser(format, &p, ap);
-	return (0);
+	i = parser(format, &p, ap);
+	return (i);
 }

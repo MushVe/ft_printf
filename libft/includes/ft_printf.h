@@ -37,6 +37,7 @@ typedef struct	s_p
 	int			op_point;
 	int			op_width;
 	int			op_type;
+	char		flag;
 }				t_p;
 
 int				new_node(char *data, int size, t_p *p);
