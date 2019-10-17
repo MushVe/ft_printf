@@ -17,6 +17,7 @@ char	*add_preci(char *res, t_p *p, char c)
 	int		i;
 	char	*it;
 
+	// printf("preci = %d\n", p->op_preci);
 	it = NULL;
 	i = -1 + ft_strlen(res);
 	if (ft_strlen(res) > (unsigned long)p->op_preci && c == 's')
@@ -37,8 +38,11 @@ char	*add_width(char *res, t_p *p)
 	int		i;
 	char	*it;
 
+	// printf("width = %d\n", p->op_width);
 	it = NULL;
 	i = -1 + ft_strlen(res);
+	if (p->null == 1)
+		i++;
 	if (p->op_less == 1)
 		while (++i < p->op_width)
 			res = ft_strjoin(res, " ", 0);
@@ -51,6 +55,15 @@ char	*add_width(char *res, t_p *p)
 			it[0] = '0';
 			res[0] = '-';
 		}
+		if (p->op_diese == 1 && p->flag != 'c')
+		{
+			it = ft_strchr(res, 'x');
+			it[0] = '0';
+			if (p->flag == 'X')
+				res[1] = 'X';
+			if (p->flag == 'x')
+				res[1] = 'x';
+		}
 	}
 	else
 		while (++i < p->op_width)
@@ -58,12 +71,22 @@ char	*add_width(char *res, t_p *p)
 	return (res);
 }
 
-char	*add_x(char *res, char c)
+char	*add_x(char *res, char c, t_p *p)
 {
+	// printf("Here?\t%s\n", res);
+	if (!(ft_strcmp(res, "0")))
+	{
+		if (p->op_point == 1)
+			res[0] = '\0';
+		return (res);
+
+	}
 	if (c == 'x')
 		res = ft_strjoin("0x", res, 0);
 	if (c == 'X')
 		res = ft_strjoin("0X", res, 0);
+	if (c == 'o')
+		res = ft_strjoin("0", res, 0);
 	return (res);
 }
 
@@ -89,19 +112,24 @@ int		process(char c, va_list ap, t_p *p)
 			res = get_long(ap);
 		if (p->op_type == 22)
 			res = get_longlong(ap);
-		res = get_int(ap);
+		else res = get_int(ap);
 	}
 	if (c == 'u' || c == 'o' || c == 'x' || c == 'X')
 	{
-		if (p->op_type == 21)
-			res = get_ulong(c, ap);
-		if (p->op_type == 22)
+		// if (p->op_type == 21)
+		// 	res = get_ulong(c, ap);
+		// if (p->op_type == 22)
+		// 	res = get_ulonglong(c, ap);
+		if (p->op_type == 21 || p->op_type == 22)
 			res = get_ulonglong(c, ap);
-		res = get_uint(c, ap);
+		else res = get_uint(c, ap);
+		if (!(ft_strcmp(res, "0")) && (p->op_diese != 1 && p->op_point == 1)
+				&& (c == 'x' || c == 'X'))
+			res[0] = '\0';
 	}
 	if (c == 'c')
 	{
-		res = get_char(c, ap);
+		res = get_char(c, ap, p);
 	}
 	if (c == 's')
 	{
@@ -118,13 +146,14 @@ int		process(char c, va_list ap, t_p *p)
 		if (!(res = ft_strdup("%")))
 			return (0);
 	}
-	if ((p->op_plus == 1 || p->op_space == 1) && p->flag!= c)
+//	printf("null = %d\n", p->null);
+	if ((p->op_plus == 1 || p->op_space == 1) && p->flag != 'c' && c != '%')
 		res = add_sign(res, p);
-	if ((p->op_preci != 0) && p->flag!= c)
+	if (p->op_preci != 0 && p->flag != 'c')
 		res = add_preci(res, p, c);
-	if ((p->op_diese == 1) && p->flag!= c)
-		res = add_x(res, c);
-	if ((p->op_width != 0) && p->flag!= c)
+	if (p->op_diese == 1 && p->flag != 'c')
+			res = add_x(res, c, p);
+	if ((p->op_width != 0)) // &&(p->flag != 'c' || p->null == 1))
 		res = add_width(res, p);
 	if (!(new_node(res, ft_strlen(res), p)))
 		return (0);

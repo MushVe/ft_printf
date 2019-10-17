@@ -18,10 +18,12 @@ char	*get_string(char c, va_list ap)
 
 	(void)c;
 	res = va_arg(ap, char*);
+	if (res == NULL)
+		res = ft_strdup("(null)");
 	return (res);
 }
 
-char	*get_char(char c, va_list ap)
+char	*get_char(char c, va_list ap, t_p *p)
 {
 	char	*res;
 
@@ -29,6 +31,8 @@ char	*get_char(char c, va_list ap)
 	if (!(res = ft_strnew(1)))
 		return (0);
 	res[0] = va_arg(ap, int);
+	if (res[0] == (char)NULL)
+		p->null = 1;
 	return (res);
 }
 

@@ -34,6 +34,11 @@ int		print_node(t_p *p)
 	{
 		ft_putstr(cpy->str);
 		i = i + ft_strlen(cpy->str);
+		if (cpy->null == 1)
+		{
+			write(1,"\0",1);
+			i++;
+		}
 		cpy = cpy->next;
 	}
 	return (i);
@@ -78,7 +83,8 @@ int		get_options(t_p *p, const char *frmt)
 		p->op_space = 1;
 	else if (frmt[0] == '#')
 		p->op_diese = 1;
-	else if (frmt[0] == '0' && p->op_width == 0 && p->op_preci == 0)
+	else if (frmt[0] == '0' && p->op_width == 0 && p->op_preci == 0
+				&& p->op_point == 0)
 		p->op_zero = 1;
 	else if (frmt[0] == '.')
 		p->op_point = 1;
@@ -87,10 +93,7 @@ int		get_options(t_p *p, const char *frmt)
 	else if (ft_isdigit(frmt[0]) && p->op_point == 1 && p->op_preci == 0)
 		p->op_preci = ft_atoi(frmt);
 	else if (frmt[0] == 'h' || frmt[0] == 'l' || frmt[0] == 'L')
-	{
 		get_type(p, frmt[0]);
-		p->op_type = 1;
-	}
 	else if (!(ft_isdigit(frmt[0]) && p->op_type == 0
 			&& (p->op_width != 0 || p->op_preci != 0)))
 		return (0); //error
@@ -108,6 +111,7 @@ int		parser(const char *restrict frmt, t_p *p, va_list ap)
 	j = 0;
 	while (frmt[++i])
 	{
+		init(p);
 		if (flag == 1 && (frmt[i] == '%' || frmt[i] == '\0'))
 		{
 			flag = 0;

@@ -21,6 +21,7 @@ typedef struct	s_lst
 {
 	char				*str;
 	int					size;
+	int					null;
 	struct s_lst		*next;
 }				t_lst;
 
@@ -37,10 +38,12 @@ typedef struct	s_p
 	int			op_point;
 	int			op_width;
 	int			op_type;
+	int			null;
 	char		flag;
 }				t_p;
 
 int				new_node(char *data, int size, t_p *p);
+void			init(t_p *p);
 void			printargs(int arg1, ...);
 int				ft_printf(const char *restrict format, ...);
 int				parser(const char *restrict format, t_p *p, va_list ap);
@@ -51,7 +54,7 @@ char			*get_longlong(va_list ap);
 char			*get_uint(char c, va_list ap);
 char			*get_ulong(char c, va_list ap);
 char			*get_ulonglong(char c, va_list ap);
-char			*get_char(char c, va_list ap);
+char			*get_char(char c, va_list ap, t_p *p);
 char			*get_string(char c, va_list ap);
 char			*get_double(char c, va_list ap);
 char			*get_longdouble(char c, va_list ap);

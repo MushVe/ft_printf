@@ -38,7 +38,6 @@ void	printargs(int arg1, ...)
 
 void	init(t_p *p)
 {
-	p->first = NULL;
 	p->op_plus = 0;
 	p->op_less = 0;
 	p->op_space = 0;
@@ -49,6 +48,7 @@ void	init(t_p *p)
 	p->op_width = 0;
 	p->op_type = 0;
 	p->flag = 0;
+	p->null = 0;
 }
 
 int		ft_printf(const char *restrict format, ...)
@@ -58,7 +58,7 @@ int		ft_printf(const char *restrict format, ...)
 	int		i;
 
 	va_start(ap, format);
-	init(&p);
+	p.first = NULL;
 	i = parser(format, &p, ap);
 	return (i);
 }

@@ -38,11 +38,15 @@ int		new_node(char *data, int size, t_p *p)
 		return (0);
 	node->str = ft_strdup(data);
 	node->size = size;
+	if (p->null == 1)
+		node->null = 1;
+	else
+		node->null = 0;
 	node->next = NULL;
 	if (!cpy)
 	{
-		p->first = node;
-		return (1);
+			p->first = node;
+			return (1);
 	}
 	while (cpy->next != NULL)
 		cpy = cpy->next;
