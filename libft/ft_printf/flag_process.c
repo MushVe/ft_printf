@@ -64,6 +64,12 @@ char	*add_width(char *res, t_p *p)
 			if (p->flag == 'x')
 				res[1] = 'x';
 		}
+		if (p->op_plus == 1 && p->flag != 'c')
+		{
+			it = ft_strchr(res, '+');
+			it[0] = '0';
+			res[0] = '+';
+		}
 	}
 	else
 		while (++i < p->op_width)
@@ -76,7 +82,7 @@ char	*add_x(char *res, char c, t_p *p)
 	// printf("Here?\t%s\n", res);
 	if (!(ft_strcmp(res, "0")))
 	{
-		if (p->op_point == 1)
+		if (p->op_point == 1 && c != 'o')
 			res[0] = '\0';
 		return (res);
 
@@ -108,11 +114,13 @@ int		process(char c, va_list ap, t_p *p)
 	res = NULL;
 	if (c == 'd' || c == 'i' || c == 'p')
 	{
-		if (p->op_type == 21)
-			res = get_long(ap);
-		if (p->op_type == 22)
+		// if (p->op_type == 21)
+		// 	res = get_long(ap);
+		// if (p->op_type == 22)
+		// 	res = get_longlong(ap);
+		if (p->op_type == 21 || p->op_type == 22)
 			res = get_longlong(ap);
-		else res = get_int(ap);
+		else res = get_int(ap, p);
 	}
 	if (c == 'u' || c == 'o' || c == 'x' || c == 'X')
 	{
@@ -124,7 +132,7 @@ int		process(char c, va_list ap, t_p *p)
 			res = get_ulonglong(c, ap);
 		else res = get_uint(c, ap);
 		if (!(ft_strcmp(res, "0")) && (p->op_diese != 1 && p->op_point == 1)
-				&& (c == 'x' || c == 'X'))
+				&& (c == 'x' || c == 'X' || c == 'o'))
 			res[0] = '\0';
 	}
 	if (c == 'c')
@@ -147,10 +155,11 @@ int		process(char c, va_list ap, t_p *p)
 			return (0);
 	}
 //	printf("null = %d\n", p->null);
-	if ((p->op_plus == 1 || p->op_space == 1) && p->flag != 'c' && c != '%')
-		res = add_sign(res, p);
 	if (p->op_preci != 0 && p->flag != 'c')
 		res = add_preci(res, p, c);
+	if ((p->op_plus == 1 || p->op_space == 1) && p->flag != 'c' && c != '%'
+		&& c != 'u')
+		res = add_sign(res, p);
 	if (p->op_diese == 1 && p->flag != 'c')
 			res = add_x(res, c, p);
 	if ((p->op_width != 0)) // &&(p->flag != 'c' || p->null == 1))

@@ -12,14 +12,27 @@
 
 #include "../includes/ft_printf.h"
 
-char	*get_int(va_list ap)
+char	*get_int(va_list ap, t_p *p)
 {
 	int		nbr;
 	char	*res;
 
 	nbr = va_arg(ap, int);
-	if (!(res = convert_signed((long long)nbr)))
-		return (0);
+	if (p->op_type == 11)
+	{
+		if (!(res = convert_signed((short)nbr)))
+			return (0);
+	}
+	else if (p->op_type == 12)
+	{
+		if (!(res = convert_signed((char)nbr)))
+			return (0);
+	}
+	else
+	{
+		if (!(res = convert_signed((long long)nbr)))
+			return (0);
+	}
 	return (res);
 }
 

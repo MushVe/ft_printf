@@ -48,7 +48,7 @@ void			printargs(int arg1, ...);
 int				ft_printf(const char *restrict format, ...);
 int				parser(const char *restrict format, t_p *p, va_list ap);
 int				process(char c, va_list ap, t_p *p);
-char			*get_int(va_list ap);
+char			*get_int(va_list ap, t_p *p);
 char			*get_long(va_list ap);
 char			*get_longlong(va_list ap);
 char			*get_uint(char c, va_list ap);
