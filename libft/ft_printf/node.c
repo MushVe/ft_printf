@@ -45,8 +45,8 @@ int		new_node(char *data, int size, t_p *p)
 	node->next = NULL;
 	if (!cpy)
 	{
-			p->first = node;
-			return (1);
+		p->first = node;
+		return (1);
 	}
 	while (cpy->next != NULL)
 		cpy = cpy->next;

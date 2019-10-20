@@ -23,6 +23,14 @@ int		isflag(char c, t_p *p)
 	return (0);
 }
 
+int		isoption(char c)
+{
+	if ((c >= '0' && c <= '9') || c == ' ' || c == '+' || c == '-' || c == 'j'
+		|| c == 'h' || c == 'l' || c == 'L' || c == '#' || c == '.' || c == 'z')
+		return (1);
+	return (0);
+}
+
 int		print_node(t_p *p)
 {
 	t_lst	*cpy;
@@ -36,7 +44,7 @@ int		print_node(t_p *p)
 		i = i + ft_strlen(cpy->str);
 		if (cpy->null == 1)
 		{
-			write(1,"\0",1);
+			write(1, "\0", 1);
 			i++;
 		}
 		cpy = cpy->next;
@@ -49,21 +57,21 @@ int		get_type(t_p *p, char c)
 	if (c == 'h')
 	{
 		if (p->op_type != 0 && p->op_type != 11)
-			return (1); //error
+			return (1);
 		if (p->op_type == 0)
 			p->op_type += 10;
 	}
 	if (c == 'l')
 	{
 		if (p->op_type != 0 && p->op_type != 21)
-			return (1); //error
+			return (1);
 		if (p->op_type == 0)
 			p->op_type += 20;
 	}
 	if (c == 'L')
 	{
 		if (p->op_type != 0 && p->op_type != 31)
-			return (1); //error
+			return (1);
 		if (p->op_type == 0)
 			p->op_type += 30;
 	}
@@ -73,8 +81,6 @@ int		get_type(t_p *p, char c)
 
 int		get_options(t_p *p, const char *frmt)
 {
-	// stocker options dans variables (erreurs pas gerees)
-	// ft_putendl("111");
 	if (frmt[0] == '+')
 		p->op_plus = 1;
 	else if (frmt[0] == '-')
@@ -96,7 +102,7 @@ int		get_options(t_p *p, const char *frmt)
 		get_type(p, frmt[0]);
 	else if (!(ft_isdigit(frmt[0]) && p->op_type == 0
 			&& (p->op_width != 0 || p->op_preci != 0)))
-		return (0); //error
+		return (0);
 	return (1);
 }
 
@@ -121,19 +127,18 @@ int		parser(const char *restrict frmt, t_p *p, va_list ap)
 		}
 		else if (flag == 0)
 		{
-			while (!(isflag(frmt[i], p)))
+			while (!(isflag(frmt[i], p)) && isoption(frmt[i]))
 			{
 				if (!(get_options(p, frmt + i)))
-					return (0); //error
+					return (0);
 				i++;
 			}
-	// envoyer le flag pour traitement puis stocker dans node
 			process(frmt[i], ap, p);
 			flag = 1;
 			j = i + 1;
 		}
 	}
-	if (j != i)
+	if (j != i && frmt[i - 1] != '%')
 		if (!(new_node(ft_stridup(frmt + j, i - j), i - j, p)))
 			return (0);
 	i = print_node(p);

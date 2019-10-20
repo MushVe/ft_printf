@@ -9,66 +9,6 @@
 int main(void)
 {
 
-	ft_printf("%"); printf("\n");
-	printf("%"); printf("\n");
-	ft_printf("%Z"); printf("\n");
-	printf("%Z"); printf("\n");
-	ft_printf("% hZ"); printf("\n");
-	printf("% hZ"); printf("\n");
-	ft_printf("% hZ%"); printf("\n");
-	printf("% hZ%"); printf("\n");
-	ft_printf("% Z", "test"); printf("\n");
-	printf("% Z", "test"); printf("\n");
-	ft_printf("% Z ", "test"); printf("\n");
-	printf("% Z ", "test"); printf("\n");
-	ft_printf("% Z%s", "test"); printf("\n");
-	printf("% Z%s", "test"); printf("\n");
-	ft_printf("%%%", "test"); printf("\n");
-	printf("%%%", "test"); printf("\n");
-	ft_printf("%%   %", "test"); printf("\n");
-	printf("%%   %", "test"); printf("\n");
-	ft_printf("%jx", 4294967295); printf("\n");
-	printf("%jx", 4294967295); printf("\n");
-	ft_printf("%jx", 4294967296); printf("\n");
-	printf("%jx", 4294967296); printf("\n");
-	ft_printf("%jx", -4294967296); printf("\n");
-	printf("%jx", -4294967296); printf("\n");
-	ft_printf("%jx", -4294967297); printf("\n");
-	printf("%jx", -4294967297); printf("\n");
-	ft_printf("% Z", 42); printf("\n");
-	printf("% Z", 42); printf("\n");
-	ft_printf("%jd", 9223372036854775807); printf("\n");
-	printf("%jd", 9223372036854775807); printf("\n");
-	ft_printf("%jd", -9223372036854775808); printf("\n");
-	printf("%jd", -9223372036854775808); printf("\n");
-	ft_printf("%zd", 4294967295); printf("\n");
-	printf("%zd", 4294967295); printf("\n");
-	ft_printf("%zd", 4294967296); printf("\n");
-	printf("%zd", 4294967296); printf("\n");
-	ft_printf("%zd", -0); printf("\n");
-	printf("%zd", -0); printf("\n");
-	ft_printf("%zd", -1); printf("\n");
-	printf("%zd", -1); printf("\n");
-	ft_printf("%ju", 4999999999); printf("\n");
-	printf("%ju", 4999999999); printf("\n");
-	ft_printf("%ju", 4294967296); printf("\n");
-	printf("%ju", 4294967296); printf("\n");
-	ft_printf("%U", 4294967295); printf("\n");
-	printf("%U", 4294967295); printf("\n");
-	ft_printf("%hU", 4294967296); printf("\n");
-	printf("%hU", 4294967296); printf("\n");
-	ft_printf("%U", 4294967296); printf("\n");
-	printf("%U", 4294967296); printf("\n");
-	ft_printf("%zhd", 4294967296); printf("\n");
-	printf("%zhd", 4294967296); printf("\n");
-	ft_printf("%jzd", 9223372036854775807); printf("\n");
-	printf("%jzd", 9223372036854775807); printf("\n");
-	ft_printf("%jhd", 9223372036854775807); printf("\n");
-	printf("%jhd", 9223372036854775807); printf("\n");
-	ft_printf("%hhld", 128); printf("\n");
-	printf("%hhld", 128); printf("\n");
-	ft_printf("@main_ftprintf: %###-#0000 33...12..#0+0d", 256); printf("\n");
-	printf("@main_ftprintf: %###-#0000 33...12..#0+0d", 256); printf("\n");
 
 	// int p = 643;
 

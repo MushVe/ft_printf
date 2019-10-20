@@ -45,9 +45,15 @@ typedef struct	s_p
 int				new_node(char *data, int size, t_p *p);
 void			init(t_p *p);
 void			printargs(int arg1, ...);
+int				isflag(char c, t_p *p);
 int				ft_printf(const char *restrict format, ...);
 int				parser(const char *restrict format, t_p *p, va_list ap);
 int				process(char c, va_list ap, t_p *p);
+char			*add_preci(char *res, t_p *p, char c);
+char			*add_width(char *res, t_p *p);
+char			*adjust_width(char *res, char *it, int i, t_p *p);
+char			*add_x(char *res, char c, t_p *p);
+char			*add_sign(char *res, t_p *p);
 char			*get_int(va_list ap, t_p *p);
 char			*get_long(va_list ap);
 char			*get_longlong(va_list ap);

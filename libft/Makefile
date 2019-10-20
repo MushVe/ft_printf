@@ -29,8 +29,8 @@ FILE = 	ft_abs.c ft_atoi.c ft_bzero.c ft_capitalize.c ft_foreach.c \
 		ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c ft_strrchr.c \
 		ft_strrev.c ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c \
 		ft_tolower.c ft_toupper.c ft_upcase.c get_next_line.c \
-		ft_printf.c parser.c node.c flag_process.c convert.c get_type.c \
-		get_double.c get_unsigned.c
+		ft_printf.c parser.c node.c flag_process.c add_stuff.c convert.c \
+		get_type.c get_double.c get_unsigned.c
 
 SRC = $(FILE:%=%)
 
