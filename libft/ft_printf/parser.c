@@ -79,7 +79,7 @@ int		get_type(t_p *p, char c)
 	return (0);
 }
 
-int		get_options(t_p *p, const char *frmt)
+int		getoptions(t_p *p, const char *frmt)
 {
 	if (frmt[0] == '+')
 		p->op_plus = 1;
@@ -129,7 +129,7 @@ int		parser(const char *restrict frmt, t_p *p, va_list ap)
 		{
 			while (!(isflag(frmt[i], p)) && isoption(frmt[i]))
 			{
-				if (!(get_options(p, frmt + i)))
+				if (!(getoptions(p, frmt + i)))
 					return (0);
 				i++;
 			}
@@ -144,3 +144,49 @@ int		parser(const char *restrict frmt, t_p *p, va_list ap)
 	i = print_node(p);
 	return (i);
 }
+
+// int		next_parser(char *frmt, int *i, t_p *p, va_list ap)
+// {
+// 	int	flag;
+
+// 	flag = 1;
+// 	if (flag == 1 && (frmt[i[0]] == '%' || frmt[i[0]] == '\0'))
+// 	{
+// 		flag = 0;
+// 		if (i[1] != i[0])
+// 			if (!(new_node(ft_stridup(frmt + i[1], i[0] - i[1]),
+// 					i[0] - i[1], p)))
+// 				return (0);
+// 	}
+// 	else if (flag == 0)
+// 	{
+// 		while (!(isflag(frmt[i[0]], p)) && isoption(frmt[i[0]]))
+// 		{
+// 			if (!(getoptions(p, frmt + i[0])))
+// 				return (0);
+// 			i[0]++;
+// 		}
+// 		process(frmt[i[0]], ap, p);
+// 		flag = 1;
+// 		i[1] = i[0] + 1;
+// 	}
+// 	return (0);
+// }
+
+// int		parser(const char *restrict frmt, t_p *p, va_list ap)
+// {
+// 	int	i[2];
+
+// 	i[0] = -1;
+// 	i[1] = 0;
+// 	while (frmt[++i[0]])
+// 	{
+// 		init(p);
+// 		next_parser((char*)frmt, i, p, ap);
+// 	}
+// 	if (i[1] != i[0] && frmt[i[0] - 1] != '%')
+// 		if (!(new_node(ft_stridup(frmt + i[1], i[0] - i[1]), i[0] - i[1], p)))
+// 			return (0);
+// 	i[0] = print_node(p);
+// 	return (i[0]);
+// }
