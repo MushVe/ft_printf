@@ -14,7 +14,7 @@
 
 int		isflag(char c, t_p *p)
 {
-	if (c == 'c' || c == 's' || c == 'd' || c == 'i' || c == 'o'
+	if (c == 'c' || c == 's' || c == 'd' || c == 'i' || c == 'o' || c == 'p'
 		|| c == 'u' || c == 'x' || c == 'X' || c == 'f' || c == '%')
 	{
 		p->flag = c;

@@ -18,7 +18,7 @@ char	*get_uint(char c, va_list ap)
 	char			*res;
 
 	nbr = va_arg(ap, unsigned int);
-	if (c == 'x')
+	if (c == 'x' || c == 'p')
 	{
 		if (!(res = ft_itoa_base(nbr, 16, 1)))
 			return (0);
@@ -44,7 +44,7 @@ char	*get_ulong(char c, va_list ap)
 	char			*res;
 
 	nbr = va_arg(ap, unsigned long);
-	if (c == 'x')
+	if (c == 'x' || c == 'p')
 	{
 		if (!(res = ft_itoa_base(nbr, 16, 1)))
 			return (0);
@@ -70,7 +70,7 @@ char	*get_ulonglong(char c, va_list ap)
 	char				*res;
 
 	nbr = va_arg(ap, unsigned long long);
-	if (c == 'x')
+	if (c == 'x'|| c == 'p')
 	{
 		if (!(res = ft_itoa_base(nbr, 16, 1)))
 			return (0);
