@@ -31,27 +31,6 @@ int		isoption(char c)
 	return (0);
 }
 
-int		print_node(t_p *p)
-{
-	t_lst	*cpy;
-	int		i;
-
-	cpy = p->first;
-	i = 0;
-	while (cpy)
-	{
-		ft_putstr(cpy->str);
-		i = i + ft_strlen(cpy->str);
-		if (cpy->null == 1)
-		{
-			write(1, "\0", 1);
-			i++;
-		}
-		cpy = cpy->next;
-	}
-	return (i);
-}
-
 int		get_type(t_p *p, char c)
 {
 	if (c == 'h')

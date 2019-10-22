@@ -32,68 +32,6 @@ char	*add_preci(char *res, t_p *p, char c)
 	return (res);
 }
 
-char	*adjust_width(char *res, char *it, int i, t_p *p)
-{
-	while (++i < p->op_width)
-		res = ft_strjoin("0", res, 0);
-	if ((it = ft_strchr(res, '-')))
-	{
-		it[0] = '0';
-		res[0] = '-';
-	}
-	if ((p->op_diese == 1 && p->flag != 'c') || p->flag == 'p')
-	{
-		it = ft_strchr(res, 'x');
-		it[0] = '0';
-		if (p->flag == 'X')
-			res[1] = 'X';
-		if (p->flag == 'x' || p->flag == 'p')
-			res[1] = 'x';
-	}
-	if (p->op_plus == 1 && p->flag != 'c' && p->flag != 'u'
-			&& !(ft_strchr(res, '-')))
-	{
-		it = ft_strchr(res, '+');
-		it[0] = '0';
-		// if (p->flag == 'u')
-		// 	res[0] = '0';
-		// else
-		res[0] = '+';
-	}
-	if (p->op_space == 1 && p->flag != 'c' && p->flag != 'u'
-			&& !(ft_strchr(res, '-')))
-	{
-		it = ft_strchr(res, ' ');
-		it[0] = '0';
-		res[0] = ' ';
-	}
-	
-	return (res);
-}
-
-char	*add_width(char *res, t_p *p)
-{
-	int		i;
-	char	*it;
-
-	it = NULL;
-	i = -1 + ft_strlen(res);
-	if (p->null == 1)
-		i++;
-	if (p->op_less == 1)
-		while (++i < p->op_width)
-			res = ft_strjoin(res, " ", 0);
-	else if ((p->op_zero == 1 && p->op_preci == 0)
-		&& !(p->flag == 'p' && p->op_point == 1 && p->op_preci == 0))
-		res = adjust_width(res, it, i, p);
-	else
-	{
-		while (++i < p->op_width)
-			res = ft_strjoin(" ", res, 0);
-	}
-	return (res);
-}
-
 char	*add_x(char *res, char c, t_p *p)
 {
 	if (!(ft_strcmp(res, "0")) && c != 'p')

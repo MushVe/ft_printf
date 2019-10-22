@@ -19,21 +19,25 @@
 **	void	va_end(va_list ap);
 */
 
-void	printargs(int arg1, ...)
+int		print_node(t_p *p)
 {
-	va_list	ap;
+	t_lst	*cpy;
 	int		i;
 
-	va_start(ap, arg1);
-	i = arg1;
-	while (i >= 0)
+	cpy = p->first;
+	i = 0;
+	while (cpy)
 	{
-		ft_putnbr(i);
-		ft_putchar(' ');
-		i = va_arg(ap, int);
+		ft_putstr(cpy->str);
+		i = i + ft_strlen(cpy->str);
+		if (cpy->null == 1)
+		{
+			write(1, "\0", 1);
+			i++;
+		}
+		cpy = cpy->next;
 	}
-	va_end(ap);
-	ft_putchar('\n');
+	return (i);
 }
 
 void	init(t_p *p)

@@ -44,7 +44,7 @@ typedef struct	s_p
 
 int				new_node(char *data, int size, t_p *p);
 void			init(t_p *p);
-void			printargs(int arg1, ...);
+int				print_node(t_p *p);
 int				isflag(char c, t_p *p);
 int				ft_printf(const char *restrict format, ...);
 int				parser(const char *restrict format, t_p *p, va_list ap);
