@@ -9,7 +9,106 @@
 int main(void)
 {
 
+	ft_printf("%+05u", 432); printf(" 1.\n");
+	printf("%+05u", 432); printf(" 2.\n");
+	ft_printf("%+04u", 0); printf(" 3.\n");
+	printf("%+04u", 0); printf(" 4.\n");
 
+
+
+
+	// ft_printf("%5"); printf(" 1.\n");
+	// printf("%5"); printf(" 2.\n");
+
+	// ft_printf("%5"); printf(" a.\n");
+	// printf("%5"); printf(" b.\n");
+	// ft_printf("%05"); printf(" c.\n");
+	// printf("%05"); printf(" d.\n");
+	// ft_printf("%-05"); printf(" e.\n");
+	// printf("%-05"); printf(" f.\n");
+	// ft_printf("%-5"); printf(" g.\n");
+	// printf("%-5"); printf(" h.\n");
+
+	// ft_printf("%6"); printf(" i.\n");
+	// printf("%6"); printf(" j.\n");
+	// ft_printf("%06"); printf(" k.\n");
+	// printf("%06"); printf(" l.\n");
+	// ft_printf("%-06"); printf(" m.\n");
+	// printf("%-06"); printf(" n.\n");
+	// ft_printf("%-6"); printf(" o.\n");
+	// printf("%-6"); printf(" p.\n");
+
+	// ft_printf("%#.3o", 1); printf(".\n");
+	// printf("%#.3o", 1); printf(".\n");
+
+	// ft_printf("%hhu, %hhu", 0, 255 + 42); printf(".\n");
+	// printf("%hhu, %hhu", 0, 255 + 42); printf(".\n");
+	// ft_printf("{% 03d}", 0); printf(".\n");
+	// printf("{% 03d}", 0); printf(".\n");
+	// ft_printf("% 03d", 0); printf(".\n");
+	// printf("% 03d", 0); printf(".\n");
+	// ft_printf("%.0p, %.p", 0, 0); printf(".\n");
+	// printf("%.0p, %.p", 0, 0); printf(".\n");
+	// ft_printf("%.p, %.0p", 0, 0); printf(".\n");
+	// printf("%.p, %.0p", 0, 0); printf(".\n");
+	// ft_printf("%hhu / %hhu", 32767 - 42, 32767 - 4200); printf(".\n");
+	// printf("%hhu / %hhu", 32767 - 42, 32767 - 4200); printf(".\n");
+	// ft_printf("%o, %ho, %hho", -42, -42, -42); printf(".\n");
+	// printf("%o, %ho, %hho", -42, -42, -42); printf(".\n");
+
+	// ft_printf("%5"); printf(".\n");
+	// printf("%5"); printf(".\n");
+	// ft_printf("%05"); printf(".\n");
+	// printf("%05"); printf(".\n");
+	// ft_printf("%-05"); printf(".\n");
+	// printf("%-05"); printf(".\n");
+	// ft_printf("%-5"); printf(".\n");
+	// printf("%-5"); printf(".\n");
+	// ft_printf("> :%.s", "hello"); printf(".\n");
+	// printf("  :%.s", "hello"); printf(".\n");
+	// ft_printf("> :%.0s", "hello"); printf(".\n");
+	// printf("  :%.0s", "hello"); printf(".\n");
+	// ft_printf("> :%.s", "NULL"); printf(".\n");
+	// printf("  :%.s", "NULL"); printf(".\n");
+	// ft_printf("> :%.0s", "NULL"); printf(".\n");
+	// printf("  :%.0s", "NULL"); printf(".\n");
+	// ft_printf("> :%.s", "hoi test"); printf(".\n");
+	// printf("  :%.s", "hoi test"); printf(".\n");
+	// ft_printf("> :%3.s", "hoi test"); printf(".\n");
+	// printf("  :%3.s", "hoi test"); printf(".\n");
+	// ft_printf("> :%10.s", "hoi test"); printf(".\n");
+	// printf("  :%10.s", "hoi test"); printf(".\n");
+	// ft_printf("> :%3.s", NULL); printf(".\n");
+	// printf("  :%3.s", NULL); printf(".\n");
+	// ft_printf("> :%10.s", NULL); printf(".\n");
+	// printf("  :%10.s", NULL); printf(".\n");
+	// ft_printf("> :%-3.s", "hoi test"); printf(".\n");
+	// printf("  :%-3.s", "hoi test"); printf(".\n");
+	// ft_printf("> :%-8.s", "hoi test"); printf(".\n");
+	// printf("  :%-8.s", "hoi test"); printf(".\n");
+	// ft_printf("> :%-3.s", NULL); printf(".\n");
+	// printf("  :%-3.s", NULL); printf(".\n");
+	// ft_printf("> :%-8.s", NULL); printf(".\n");
+	// printf("  :%-8.s", NULL); printf(".\n");
+	// ft_printf("> :%-.00s", "hoi test"); printf(".\n");
+	// printf("  :%-.00s", "hoi test"); printf(".\n");
+	// ft_printf("> :%.0u", 0); printf(".\n");
+	// printf("  :%.0u", 0); printf(".\n");
+	// ft_printf("> :%.u", 0); printf(".\n");
+	// printf("  :%.u", 0); printf(".\n");
+	// ft_printf("> :%5.0u", 0); printf(".\n");
+	// printf("  :%5.0u", 0); printf(".\n");
+	// ft_printf("> :%5.u", 0); printf(".\n");
+	// printf("  :%5.u", 0); printf(".\n");
+	// ft_printf("> :%-5.0u", 0); printf(".\n");
+	// printf("  :%-5.0u", 0); printf(".\n");
+	// ft_printf("> :%-5.u", 0); printf(".\n");
+	// printf("  :%-5.u", 0); printf(".\n");
+	// ft_printf("> :%p", NULL); printf(".\n");
+	// printf("  :%p", NULL); printf(".\n");
+	// ft_printf("%5p", 0); printf(".\n");
+	// printf("%5p", 0); printf(".\n");
+	
 	// int p = 643;
 
 	// ft_printf("%p.", &p); printf("\n");

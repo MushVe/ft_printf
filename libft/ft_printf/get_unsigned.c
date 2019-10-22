@@ -12,12 +12,16 @@
 
 #include "../includes/ft_printf.h"
 
-char	*get_uint(char c, va_list ap)
+char	*get_uint(char c, va_list ap, t_p *p)
 {
 	unsigned int	nbr;
 	char			*res;
 
 	nbr = va_arg(ap, unsigned int);
+	if (p->op_type == 11)
+		nbr = (unsigned short)nbr;
+	if (p->op_type == 12)
+		nbr = (unsigned char)nbr;
 	if (c == 'x' || c == 'p')
 	{
 		if (!(res = ft_itoa_base(nbr, 16, 1)))

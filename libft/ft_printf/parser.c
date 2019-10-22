@@ -15,7 +15,7 @@
 int		isflag(char c, t_p *p)
 {
 	if (c == 'c' || c == 's' || c == 'd' || c == 'i' || c == 'o' || c == 'p'
-		|| c == 'u' || c == 'x' || c == 'X' || c == 'f' || c == '%')
+		|| c == 'u' || c == 'x' || c == 'X' || c == '%')
 	{
 		p->flag = c;
 		return (1);
@@ -133,6 +133,8 @@ int		parser(const char *restrict frmt, t_p *p, va_list ap)
 					return (0);
 				i++;
 			}
+			if (!isflag(frmt[i], p))
+				i--;
 			process(frmt[i], ap, p);
 			flag = 1;
 			j = i + 1;

@@ -50,12 +50,24 @@ char	*adjust_width(char *res, char *it, int i, t_p *p)
 		if (p->flag == 'x' || p->flag == 'p')
 			res[1] = 'x';
 	}
-	if (p->op_plus == 1 && p->flag != 'c' && !(ft_strchr(res, '-')))
+	if (p->op_plus == 1 && p->flag != 'c' && p->flag != 'u'
+			&& !(ft_strchr(res, '-')))
 	{
 		it = ft_strchr(res, '+');
 		it[0] = '0';
+		// if (p->flag == 'u')
+		// 	res[0] = '0';
+		// else
 		res[0] = '+';
 	}
+	if (p->op_space == 1 && p->flag != 'c' && p->flag != 'u'
+			&& !(ft_strchr(res, '-')))
+	{
+		it = ft_strchr(res, ' ');
+		it[0] = '0';
+		res[0] = ' ';
+	}
+	
 	return (res);
 }
 
@@ -84,7 +96,7 @@ char	*add_width(char *res, t_p *p)
 
 char	*add_x(char *res, char c, t_p *p)
 {
-	if (!(ft_strcmp(res, "0")))
+	if (!(ft_strcmp(res, "0")) && c != 'p')
 	{
 		if (p->op_point == 1 && c != 'o')
 			res[0] = '\0';
@@ -94,7 +106,7 @@ char	*add_x(char *res, char c, t_p *p)
 		res = ft_strjoin("0x", res, 0);
 	if (c == 'X')
 		res = ft_strjoin("0X", res, 0);
-	if (c == 'o')
+	if (c == 'o' && res[0] != '0')
 		res = ft_strjoin("0", res, 0);
 	return (res);
 }
@@ -103,9 +115,9 @@ char	*add_sign(char *res, t_p *p)
 {
 	if (ft_strchr(res, '-'))
 		return (res);
-	if (p->op_plus == 1)
+	if (p->op_plus == 1 && p->flag != 'u')
 		res = ft_strjoin("+", res, 0);
-	else if (p->op_space == 1)
+	else if (p->op_space == 1 && p->flag != 'u')
 		res = ft_strjoin(" ", res, 0);
 	return (res);
 }

@@ -57,7 +57,7 @@ char			*add_sign(char *res, t_p *p);
 char			*get_int(va_list ap, t_p *p);
 char			*get_long(va_list ap);
 char			*get_longlong(va_list ap);
-char			*get_uint(char c, va_list ap);
+char			*get_uint(char c, va_list ap, t_p *p);
 char			*get_ulong(char c, va_list ap);
 char			*get_ulonglong(char c, va_list ap);
 char			*get_char(char c, va_list ap, t_p *p);
