@@ -16,11 +16,16 @@ char	*add_preci(char *res, t_p *p, char c)
 {
 	int		i;
 	char	*it;
+	char	*tmp;
 
 	it = NULL;
 	i = -1 + ft_strlen(res);
 	if (ft_strlen(res) > (unsigned long)p->op_preci && c == 's')
-		res = ft_strsub(res, 0, p->op_preci);
+	{
+		tmp = ft_strsub(res, 0, p->op_preci);
+		ft_memdel((void*)&res);
+		res = tmp;
+	}
 	if (ft_strlen(res) < (unsigned long)p->op_preci && c != 's')
 		while (++i < p->op_preci)
 			res = ft_strjoin("0", res, 2);

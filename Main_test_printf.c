@@ -8,7 +8,202 @@
 
 int main(void)
 {
+/*	ft_printf("%.0p", 0); 
+	// ft_printf("%.0p, %.p", 0, 0); 
+	// ft_printf("%.p, %.0p", 0, 0);
+
+	ft_printf("> :%.s", "hello"); 
+	ft_printf("> :%.0s", "hello"); 
+	ft_printf("> :%.s", "NULL"); 
+	ft_printf("> :%.0s", "NULL"); 
+	ft_printf("> :%.s", "hoi test"); 
+	ft_printf("> :%3.s", "hoi test"); 
+	ft_printf("> :%10.s", "hoi test"); 
+	ft_printf("> :%3.s", NULL); 
+	ft_printf("> :%10.s", NULL); 
+	ft_printf("> :%-3.s", "hoi test"); 
+	ft_printf("> :%-8.s", "hoi test"); 
+	ft_printf("> :%-3.s", NULL); 
+	ft_printf("> :%-8.s", NULL); 
+	ft_printf("> :%-.00s", "hoi test"); 
+	ft_printf("> :%.0u", 0); 
+	ft_printf("> :%.u", 0); 
+	ft_printf("> :%5.0u", 0); 
+	ft_printf("> :%5.u", 0); 
+	ft_printf("> :%-5.0u", 0); 
+	ft_printf("> :%-5.u", 0); 
+	ft_printf("> :%p", NULL); 
+	ft_printf("%5p", 0); 
+
+	int p = 643;
+
+	ft_printf("%p.", &p); 
+	ft_printf("%0p.", &p); 
+	ft_printf("%.p.", &p); 
+	ft_printf("%22.25p.", &p); 
+	ft_printf("%22p.", &p); 
+	ft_printf("%25p.", &p); 
+	ft_printf("%22.p.", &p); 
+	ft_printf("%.25p.", &p); 
+	ft_printf("%-22.25p.", &p); 
+	ft_printf("%-22p.", &p); 
+	ft_printf("%-25p.", &p); 
+	ft_printf("%-22.p.", &p); 
+	ft_printf("%-.25p.", &p); 
+	ft_printf("%0.25p.", &p); 
+	ft_printf("%022.25p.", &p); 
+	ft_printf("%022p.", &p); 
+	ft_printf("%025p.", &p); 
+	ft_printf("%022.p.", &p); 
+	ft_printf("%022.0p.", &p); 
+	ft_printf("@moulitest: %.d %.0d.", 0, 0); 
+	ft_printf("@moulitest: %5.d %5.0d.", 0, 0); 
+	ft_printf("@moulitest: %.5d %1.5d.", 0, 0); 
+	ft_printf("%+d", 0); 
+	ft_printf("%hd", -32768); 
+	ft_printf("%hd", -32769); 
+	ft_printf("@moulitest: %.d %.0d.", 2, 2); 
+	ft_printf("@moulitest: %5.d %5.0d.", 4, 4); 
+	ft_printf("@moulitest: %.d %.0d.", 1, 1); 
+	ft_printf("@moulitest: %5.d %5.0d.", 47, 47); 
+	ft_printf("%03.2d.", 0); 
+	ft_printf("%03.2d.", 1); 
+	ft_printf("%04.2d.", 1); 
+	ft_printf("%03.1d.", 1); 
+	ft_printf("%07.4d.", 1); 
+	ft_printf("%04.7d.", 1); 
+	ft_printf("%0+5d.", 42); 
+	ft_printf("%0+5d.", -42); 
+	ft_printf("%hd.", 32768); 
+	ft_printf("%hhd.", 128); 
+	ft_printf("%hhd.", -129); 
+	ft_printf("%ld.", 2147483647); 
+	ft_printf("%ld.", -2147483648); 
+	ft_printf("%ld.", 2147483648); 
+	ft_printf("%ld.", -2147483649); 
+	ft_printf("% 10.5d.", 4242); 
+	ft_printf("%+10.5d.", 4242); 
+	ft_printf("%-+10.5d.", 4242); 
+	ft_printf("@moulitest: %.o %.0o.", 0, 0); 
+	ft_printf("@moulitest: %5.o %5.0o.", 0, 0); 
+	ft_printf("@moulitest: %#.o %#.0o.", 0, 0); 
+	ft_printf("% u.", 4294967295); 
+	ft_printf("%+u.", 4294967295); 
+	ft_printf("%   %.", "test"); 
+	ft_printf("%lx.", 4294967296); 
+	ft_printf("%lx.", 100000000); 
+	ft_printf("%llX.", 4294967296); 
+	ft_printf("%llx.", 9223372036854775807); 
+	ft_printf("%llx.", 9223372036854775808); 
+	ft_printf("%#llx.", 9223372036854775807); 
+	ft_printf("%#x.", 0); 
+	ft_printf("%#08x.", 42); 
+	ft_printf("@moulitest: %#.x %#.0x.", 0, 0); 
+	ft_printf("@moulitest: %.x %.0x.", 0, 0); 
+	ft_printf("@moulitest: %5.x %6.0x.", 0, 0); 
+	ft_printf("%10s is a string.", "this"); 
+	ft_printf("%-10s is a string.", "this"); 
+	ft_printf("@moulitest: %s.", NULL); 
+	ft_printf("%.2c.", NULL); 
+	ft_printf("%s %s.", NULL, "string"); 
+	ft_printf("@moulitest: %c.", 0); 
+	ft_printf("%2c.", 0); 
+	ft_printf("%c.", 0); 
+	ft_printf("%4c.", 0); 
+	ft_printf("null %c and text.", 0); 
+	ft_printf("% c.", 0); 
+	ft_printf("%#6o.", 2500); 
+	ft_printf("%-#6o.", 2500); 
+	ft_printf("@moulitest: %.o %.0o.", 0, 0); 
+	ft_printf("@moulitest: %5.o %5.0o.", 0, 0); 
+	ft_printf("%0+5d.", 42); 
+	ft_printf("%hd.", 32768); 
+	ft_printf("%hhd.", 128); 
+	ft_printf("%hhd.", -129); 
+	ft_printf("%ld.", 2147483648); 
+	ft_printf("%ld.", -2147483649); 
+	ft_printf("%lld.", 9223372036854775807); 
+	ft_printf("%lld.", -9223372036854775808); 
+	ft_printf("% 10.5d.", 4242); 
+	ft_printf("%+10.5d.", 4242); 
+	ft_printf("%-+10.5d.", 4242); 
+	ft_printf("%03.2d.", 0); 
+	ft_printf("%03.2d.", 1); 
+	ft_printf("@moulitest: %.d %.0d.", 0, 0); 
+	ft_printf("@moulitest: %5.d %5.0d.", 0, 0); 
+	ft_printf("% u.", 4294967295); 
+	ft_printf("%+u.", 4294967295); 
+	ft_printf("%lu.", 4294967296); 
+	ft_printf("%lu.", -42); 
+	ft_printf("%llu.", 4999999999); 
+
+	unsigned int	X1 = 15680;
+	unsigned int	x1 = -15680;
+	unsigned int	X2 = 2990;
+	unsigned int	x2 = 2990;
+	int				d1 = 35;
+	int				d2 = 2;
+	int				d3 = 4096;
+	int				d4 = 857;
+	int				d5 = 41;
+	char			c1 = 'c';
+	char			*s1 = "test";
+
+	ft_printf(".%d.", X1); 
+	ft_printf(".%+10.1d.", X1); 
+	ft_printf(".% 13.1d.", X1); 
+	ft_printf(".% d.", X1); 
+	ft_printf(".%-10.7d.", X1); 
+	ft_printf(".%010d.", X1); 
+	ft_printf(".%d.", x1); 
+	ft_printf(".%+10.1d.", x1); 
+	ft_printf(".% 13.1d.", x1); 
+	ft_printf(".% d.", x1); 
+	ft_printf(".%-10.7d.", x1); 
+	ft_printf(".%010d.", x1); 
+	ft_printf(".%10.1X.", X1); 
+	ft_printf(".%13.1X.", X1); 
+	ft_printf(".%10.7d.", X1); 
+	ft_printf(".%010X.", X1); 
+	ft_printf(".%012X.", X1); 
+	ft_printf(".%-10.1X.", X1); 
+	ft_printf(".%5.8x.", x1); 
+	ft_printf(".%12X.", X2); 
+	ft_printf(".%0.0x.", x2); 
+	ft_printf(".%12.hd.", (short)d1); 
+	ft_printf(".%.12hhd.", (char)d2); 
+	ft_printf(".%ld.", (long)d3); 
+	ft_printf(".%lld.", (long long)d4); 
+	ft_printf(".%i.", d5); 
+	ft_printf(".%c.", c1); 
+	ft_printf(".%.3s.", s1); 
+	ft_printf(".%.5s.", s1); 
+
+	ft_printf("%X %d1.Aa,2 %d 3:Bb;4 %c 5!Cc?6 %% %s 7=Dd %x .\n",
+	 				X1, d2, d1, c1, s1, x1);
 	
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	ft_printf("%+05u", 432); // printf(" 1.\n");
 	// printf("%+05u", 432); // printf(" 2.\n");
 	ft_printf("%+04u", 0); // printf(" 3.\n");
