@@ -32,6 +32,8 @@ char		*ft_itoa_base(unsigned long long nb, int base, int alpha)
 	}
 	res[++i] = tab[nb % base];
 	res[++i] = '\0';
-	free(tab);
-	return (ft_strrev(res, i - 1));
+	ft_memdel((void*)&tab);
+	tab = ft_strrev(res, i - 1);
+	ft_memdel((void*)&res);
+	return (tab);
 }

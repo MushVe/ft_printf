@@ -64,5 +64,6 @@ int		ft_printf(const char *restrict format, ...)
 	va_start(ap, format);
 	p.first = NULL;
 	i = parser(format, &p, ap);
+	free_list(&p.first);
 	return (i);
 }

@@ -36,7 +36,7 @@ char	*adjust_sign(char *res, char *it, t_p *p)
 char	*adjust_width(char *res, char *it, int i, t_p *p)
 {
 	while (++i < p->op_width)
-		res = ft_strjoin("0", res, 0);
+		res = ft_strjoin("0", res, 2);
 	if ((it = ft_strchr(res, '-')))
 	{
 		it[0] = '0';
@@ -64,14 +64,12 @@ char	*add_width(char *res, t_p *p)
 		i++;
 	if (p->op_less == 1)
 		while (++i < p->op_width)
-			res = ft_strjoin(res, " ", 0);
+			res = ft_strjoin(res, " ", 1);
 	else if ((p->op_zero == 1 && p->op_preci == 0)
 		&& !(p->flag == 'p' && p->op_point == 1 && p->op_preci == 0))
 		res = adjust_width(res, it, i, p);
 	else
-	{
 		while (++i < p->op_width)
-			res = ft_strjoin(" ", res, 0);
-	}
+			res = ft_strjoin(" ", res, 2);
 	return (res);
 }

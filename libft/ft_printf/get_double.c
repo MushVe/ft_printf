@@ -15,11 +15,14 @@
 char	*get_string(char c, va_list ap)
 {
 	char	*res;
+	char	*tmp;
 
 	(void)c;
-	res = va_arg(ap, char*);
-	if (res == NULL)
+	tmp = va_arg(ap, char*);
+	if (tmp == NULL)
 		res = ft_strdup("(null)");
+	else
+		res = ft_strdup(tmp);
 	return (res);
 }
 

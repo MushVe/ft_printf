@@ -22,7 +22,8 @@ void	free_list(t_lst **list)
 	while (cpy)
 	{
 		tmp = cpy->next;
-		free(cpy);
+		ft_memdel((void*)&cpy->str);
+		ft_memdel((void*)&cpy);
 		cpy = NULL;
 		cpy = tmp;
 	}
@@ -37,6 +38,7 @@ int		new_node(char *data, int size, t_p *p)
 	if (!(node = (t_lst*)ft_memalloc(sizeof(t_lst))))
 		return (0);
 	node->str = ft_strdup(data);
+	ft_memdel((void*)&data);
 	node->size = size;
 	if (p->null == 1)
 		node->null = 1;

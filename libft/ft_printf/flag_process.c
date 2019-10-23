@@ -19,10 +19,14 @@ char	*next_process(char c, t_p *p, char *res)
 		if (p->op_preci != 0 && p->flag != 'c')
 			res = add_preci(res, p, c);
 		if (p->op_preci == 0 && p->op_point != 0
-				&& (p->flag == 's' || p->flag == 'u'))
-			res = ft_strdup("\0");
+			&& (p->flag == 's' || p->flag == 'u'))
+		{
+			ft_memdel((void*)&res);
+			if (!(res = ft_strdup("\0")))
+				return (0);
+		}
 		if ((p->op_plus == 1 || p->op_space == 1)
-				&& p->flag != 'c' && c != '%')
+			&& p->flag != 'c' && c != '%')
 			res = add_sign(res, p);
 		if ((p->op_diese == 1 && p->flag != 'c') || p->flag == 'p')
 			res = add_x(res, c, p);
@@ -30,9 +34,15 @@ char	*next_process(char c, t_p *p, char *res)
 			res = add_width(res, p);
 	}
 	else
-		res = ft_strdup("\0");
+	{
+		ft_memdel((void*)&res);
+		if (!(res = ft_strdup("\0")))
+			return (0);
+	}
 	return (res);
 }
+
+
 
 char	*first_process(char c, va_list ap, t_p *p, char *res)
 {
@@ -43,7 +53,11 @@ char	*first_process(char c, va_list ap, t_p *p, char *res)
 		else
 			res = get_int(ap, p);
 		if (!(ft_strcmp(res, "0")) && p->op_point == 1)
-			res[0] = '\0';
+		{
+			ft_memdel((void*)&res);
+			if (!(res = ft_strdup("\0")))
+				return (0);
+		}
 	}
 	if (c == 'u' || c == 'o' || c == 'x' || c == 'X' || c == 'p')
 	{
@@ -53,8 +67,13 @@ char	*first_process(char c, va_list ap, t_p *p, char *res)
 			res = get_uint(c, ap, p);
 		if (!(ft_strcmp(res, "0")) && (p->op_diese == 0 && p->op_point == 1)
 				&& (c == 'x' || c == 'X' || c == 'o' || c == 'p'))
-			res[0] = '\0';
+		{
+			ft_memdel((void*)&res);
+			if (!(res = ft_strdup("\0")))
+				return (0);
+		}
 	}
+	// printf("\n{res = %p}\n", res);
 	return (res);
 }
 
@@ -69,6 +88,7 @@ int		process(char c, va_list ap, t_p *p)
 			return (0);
 	}
 	res = first_process(c, ap, p, res);
+	// printf("\n{res after first%p}\n", res);
 	if (c == 'c')
 		res = get_char(c, ap, p);
 	if (c == 's')
@@ -76,5 +96,6 @@ int		process(char c, va_list ap, t_p *p)
 	res = next_process(c, p, res);
 	if (!(new_node(res, ft_strlen(res), p)))
 		return (0);
+	ft_memdel((void*)&res);
 	return (0);
 }
