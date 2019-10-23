@@ -96,6 +96,6 @@ int		process(char c, va_list ap, t_p *p)
 	res = next_process(c, p, res);
 	if (!(new_node(res, ft_strlen(res), p)))
 		return (0);
-	ft_memdel((void*)&res);
+//	ft_memdel((void*)&res);
 	return (0);
 }
