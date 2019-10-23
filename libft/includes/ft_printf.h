@@ -15,7 +15,6 @@
 
 # include <stdarg.h>
 # include "libft.h"
-#include <stdio.h>
 
 typedef struct	s_lst
 {

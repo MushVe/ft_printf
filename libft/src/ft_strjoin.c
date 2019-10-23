@@ -14,12 +14,10 @@
 
 static void	now_free(char *s1, char *s2, int id)
 {
-	if (/**s1 && */(id == 1 || id == 3))
+	if (id == 1 || id == 3)
 		ft_memdel((void*)&s1);
-	if (/**s2 && */(id == 2 || id == 3))
-	{	ft_memdel((void*)&s2);
-	//	ft_putstr("free? \n");
-	}
+	if (id == 2 || id == 3)
+		ft_memdel((void*)&s2);
 }
 
 char		*ft_strjoin(char *s1, char *s2, int id)
