@@ -46,7 +46,7 @@ void			free_list(t_lst **list);
 void			init(t_p *p);
 int				print_node(t_p *p);
 int				isflag(char c, t_p *p);
-int				is_lone_s(t_p *p, char c);
+int				isoption(char c);
 int				ft_printf(const char *restrict format, ...);
 int				parser(const char *restrict format, t_p *p, va_list ap);
 int				process(char c, va_list ap, t_p *p);

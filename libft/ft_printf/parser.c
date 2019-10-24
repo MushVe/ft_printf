@@ -12,25 +12,6 @@
 
 #include "../includes/ft_printf.h"
 
-int		isflag(char c, t_p *p)
-{
-	if (c == 'c' || c == 's' || c == 'd' || c == 'i' || c == 'o' || c == 'p'
-		|| c == 'u' || c == 'x' || c == 'X' || c == '%')
-	{
-		p->flag = c;
-		return (1);
-	}
-	return (0);
-}
-
-int		isoption(char c)
-{
-	if ((c >= '0' && c <= '9') || c == ' ' || c == '+' || c == '-' || c == 'j'
-		|| c == 'h' || c == 'l' || c == 'L' || c == '#' || c == '.' || c == 'z')
-		return (1);
-	return (0);
-}
-
 int		get_type(t_p *p, char c)
 {
 	if (c == 'h')
@@ -85,43 +66,56 @@ int		getoptions(t_p *p, const char *frmt)
 	return (1);
 }
 
-int		parser(const char *restrict frmt, t_p *p, va_list ap)
+int		fonction(char *frmt, t_p *p, int *i, va_list ap)
 {
-	int	i;
-	int	j;
-	int	flag;
+	while (!(isflag(frmt[i[0]], p)) && isoption(frmt[i[0]]))
+	{
+		if (!(getoptions(p, frmt + i[0])))
+			return (0);
+		i[0]++;
+	}
+	if (!isflag(frmt[i[0]], p))
+		i[0]--;
+	process(frmt[i[0]], ap, p);
+	i[2] = 1;
+	i[1] = i[0] + 1;
+	return (1);
+}
 
-	flag = 1;
-	i = -1;
-	j = 0;
-	while (frmt[++i])
+int		get_everything(char *frmt, t_p *p, int *i, va_list ap)
+{
+	while (frmt[++i[0]])
 	{
 		init(p);
-		if (flag == 1 && (frmt[i] == '%' || frmt[i] == '\0'))
+		if (i[2] == 1 && (frmt[i[0]] == '%' || frmt[i[0]] == '\0'))
 		{
-			flag = 0;
-			if (j != i)
-				if (!(new_node(ft_stridup(frmt + j, i - j), i - j, p)))
+			i[2] = 0;
+			if (i[1] != i[0])
+				if (!(new_node(ft_stridup(frmt + i[1], i[0] - i[1]),
+					i[0] - i[1], p)))
 					return (0);
 		}
-		else if (flag == 0)
+		else if (i[2] == 0)
 		{
-			while (!(isflag(frmt[i], p)) && isoption(frmt[i]))
-			{
-				if (!(getoptions(p, frmt + i)))
-					return (0);
-				i++;
-			}
-			if (!isflag(frmt[i], p))
-				i--;
-			process(frmt[i], ap, p);
-			flag = 1;
-			j = i + 1;
+			if (!(fonction(frmt, p, i, ap)))
+				return (0);
 		}
 	}
-	if (j != i && frmt[i - 1] != '%')
-		if (!(new_node(ft_stridup(frmt + j, i - j), i - j, p)))
+	return (1);
+}
+
+int		parser(const char *restrict frmt, t_p *p, va_list ap)
+{
+	int	i[3];
+
+	i[0] = -1;
+	i[1] = 0;
+	i[2] = 1;
+	if (!(get_everything((char *)frmt, p, i, ap)))
+		return (0);
+	if (i[1] != i[0] && frmt[i[0] - 1] != '%')
+		if (!(new_node(ft_stridup(frmt + i[1], i[0] - i[1]), i[0] - i[1], p)))
 			return (0);
-	i = print_node(p);
-	return (i);
+	i[0] = print_node(p);
+	return (i[0]);
 }

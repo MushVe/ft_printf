@@ -187,23 +187,6 @@ int main(void)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	ft_printf("%+05u", 432); // printf(" 1.\n");
 	// printf("%+05u", 432); // printf(" 2.\n");
 	ft_printf("%+04u", 0); // printf(" 3.\n");
